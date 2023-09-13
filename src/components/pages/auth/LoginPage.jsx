@@ -3,7 +3,12 @@ export const LoginPage = () => {
   const saludo = 'Hola mundo'
 
   return (
-    <h1>{saludo}</h1>
+    <form>
+      <h3>{saludo}</h3>
+      <input type="text" placeholder="Usuario" />
+      <input type="password" placeholder="Contraseña" />
+      <button type="submit">Ingresar</button>
+    </form>
 
   )
 }
