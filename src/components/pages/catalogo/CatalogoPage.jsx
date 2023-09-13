@@ -1,5 +1,5 @@
 export const CatalogoPage = () => {
   return (
-    <div>CatalogoPage</div>
+    <h1>CatalogoPage</h1>
   )
 }

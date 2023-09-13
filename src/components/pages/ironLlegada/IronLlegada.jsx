@@ -1,5 +1,5 @@
 export const IronLlegada = () => {
   return (
-    <div>IronLlegada</div>
+    <h1>IronLlegada</h1>
   )
 }
