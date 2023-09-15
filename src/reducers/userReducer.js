@@ -1,23 +1,20 @@
-import { POST_USER, POST_USER_PENDING, POST_USER_REJECTED, POST_USER_SUCCESS } from "../actions/types"
+import { POST_USER_PENDING, POST_USER_REJECTED, POST_USER_SUCCESS } from "../actions/types"
 
 const initialState = {
     token: null,
     loading: false,
-    error: null
+    error: null,
+    user: null
 }
 
 export const userReducer = (state = initialState, action) => {
     switch(action.type){
-        case POST_USER: 
-            return{
-                ...state,
-                token: action.payload
-            }
         case POST_USER_SUCCESS: 
             return{
                 ...state,
-                loading: true,
-                error: false
+                loading: false,
+                token: action.payload.token,
+                user: action.payload.name
             }
         case POST_USER_REJECTED: 
             return{
@@ -28,10 +25,9 @@ export const userReducer = (state = initialState, action) => {
         case POST_USER_PENDING: 
             return{
                 ...state,
-                loading: true,
-                error: false
+                loading: action.payload,
+                error: null
             }
-    
         default: return state
     }
 }
