@@ -1,9 +1,10 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { LoginPage } from '../components/pages/auth/LoginPage'
 import { RegisterPage } from '../components/pages/auth/RegisterPage'
-import { CatalogoPage } from '../components/pages/catalogo/CatalogoPage'
 import { IronLlegada } from '../components/pages/ironLlegada/IronLlegada'
 import { IronSalida } from '../components/pages/ironSalida/IronSalida'
+import { NoticiasPage } from '../components/pages/noticias/NoticiasPage'
+import { CatalogoPage } from '../components/pages/catalogo/CatalogoPage'
 
 export const RouterApp = () => {
 
@@ -14,6 +15,7 @@ export const RouterApp = () => {
             <Route path='/*' element={<Navigate to='/auth' />} />
 
             <Route path='/catalogo' element={<CatalogoPage />} />
+            <Route path='/noticias' element={<NoticiasPage />} />
             <Route path='/ironllegada' element={<IronLlegada />} />
             <Route path='/ironsalida' element={<IronSalida />} />   
         </Routes>
