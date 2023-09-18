@@ -1,0 +1,308 @@
+.container{
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 12rem auto 23rem;
+}
+
+
+
+
+main{
+    margin-top: 1.4rem;
+}
+
+main h1{
+    margin-top: 1.4rem;
+}
+
+main .noticias{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+}
+
+.guardado_noticias{
+    position: relative;
+}
+
+.guardado_ironsalida{
+    position: relative;
+}
+
+.guardado_ironllegada{
+    position: relative;
+}
+
+main .noticias > div{
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+main .noticias > div:hover{
+    box-shadow: none;
+}
+
+main .noticias > div .status_noticias{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .noticias h3{
+    margin-left: 0.6rem;
+    font-size: 1rem;
+}
+
+main .noticias .progresss{
+    position: relative;
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+}
+
+main .noticias svg{
+    width: 7rem;
+    height: 7rem;
+}
+
+main .noticias svg circle{
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transform: translate(5px, 5px);
+}
+
+main .noticias .guardado_noticias svg circle{
+    stroke: var(--color-success);
+    stroke-dashoffset: -30;
+    stroke-dasharray: 200;
+}
+
+.noticias .guardado_noticias .status_noticias .progress .porcentaje {
+    position: absolute;
+    top: 39%;
+    left: 60%;
+}
+.noticias .guardado_ironsalida .status_noticias .progress .porcentaje {
+    position: absolute;
+    top: 39%;
+    left: 60%;
+}
+.noticias .guardado_ironllegada .status_noticias .progress .porcentaje {
+    position: absolute;
+    top: 39%;
+    left: 60%;
+}
+
+main .noticias .guardado_ironsalida svg circle{
+    stroke: var(--color-primary);
+    stroke-dashoffset: -30;
+    stroke-dasharray: 200;
+}
+
+main .noticias .guardado_ironllegada svg circle{
+    stroke: var(--color-danger);
+    stroke-dashoffset: -30;
+    stroke-dasharray: 200;
+}
+
+/* Empleados del mes */
+
+main .nuevos_empleados{
+    margin-top: 1.3rem;
+}
+
+main .nuevos_empleados .lista_empleados{
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+main .nuevos_empleados .lista_empleados:hover{
+    box-shadow: none;
+}
+
+main .nuevos_empleados .lista_empleados .empleado{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main .nuevos_empleados .lista_empleados .empleado img{
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 0.4rem;
+    border-radius: 50%;
+}
+
+/* Catalogos nuevos */
+
+main .catalogos_recientes{
+    margin-top: 1.3rem;
+}
+
+main .catalogos_recientes h2{
+    margin-bottom: 0.8rem;
+}
+
+main .catalogos_recientes table{
+    background-color: var(--color-white);
+    width: 100%;
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    transition: all 0.3s ease;
+}
+
+main .catalogos_recientes table:hover{
+    box-shadow: none;
+}
+
+main table tbody td{
+    height: 2.8rem;
+    border-bottom: 1px solid var(--color-light);
+    color: var(--color-dark-variant);
+}
+
+main table tbody tr:last-child td{
+    border: none;
+}
+
+main .catalogos_recientes a{
+    text-align: center;
+    display: block;
+    margin: 1rem auto;
+    color: var(--color-primary);
+}
+
+
+
+
+
+/* Menu derecha de la pagina */
+
+.text-muted{
+    color: var(--color-info-dark);
+}
+
+.menu_opciones{
+    padding-right: 1rem;
+    margin-top: 1.4rem;
+}
+
+.menu_opciones .nav{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+}
+
+.menu_opciones .nav button{
+    display: none;
+}
+
+.menu_opciones .dark-mode{
+    background-color: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.6rem;
+    width: 4.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
+.menu_opciones .dark-mode span{
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu_opciones .dark-mode span.active{
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-1);
+}
+
+.menu_opciones .nav .perfil_usuario{
+    margin-top: -5px;
+    display: flex;
+    gap: 2rem;
+    text-align: right;
+}
+
+.menu_opciones .nav .perfil_usuario .foto_perfil{
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.menu_opciones .perfil_usuario{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu_opciones .perfil_usuario:hover{
+    box-shadow: none;
+}
+
+.menu_opciones .perfil_usuario img{
+    width: 11rem;
+    height: auto;
+    margin-bottom: 0.8rem;
+    border-radius: 50%;
+}
+
+.menu_opciones .perfil_usuario h2{
+    margin-bottom: 0.2rem;
+}
+
+.menu_opciones .user_profile{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu_opciones .recordatorios{
+    margin-top: 1rem;
+    margin-left: 5px;
+}
+
+.menu_opciones .recordatorios .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
