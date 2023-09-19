@@ -1,11 +1,22 @@
 import { Sidebar } from "../../../ui/sidebar"
 import '../../../styles/components/noticiaspage.css'
 import { Link } from "react-router-dom"
+import { useState } from "react"
 
 export const NoticiasPage = () => {
+
+  const [activeBar, setActiveBar] = useState(null)
+
+    const handleMenuBar = () => {
+        setActiveBar(!activeBar)
+    }
+
   return (
     <div className="container">
-      <Sidebar />
+      <Sidebar 
+        activeBar={activeBar} 
+        handleMenuBar={handleMenuBar} 
+      />
       <main>
         <h1>Noticias</h1>
 
@@ -139,8 +150,12 @@ export const NoticiasPage = () => {
       {/* Menu derecha */}
       <div className="menu_opciones">
           <div className="nav">
-            <button>
-              <span className="material-symbols-outlined">
+            <button
+            >
+              <span 
+                onClick={handleMenuBar}
+                className="material-symbols-outlined"
+              >
                 menu
               </span>
             </button>

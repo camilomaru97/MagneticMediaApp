@@ -1,18 +1,22 @@
 import { Link } from "react-router-dom"
 import '../styles/ui/sidebar.css'
 
-export const Sidebar = () => {
+// eslint-disable-next-line react/prop-types
+export const Sidebar = ({ activeBar, handleMenuBar }) => {
+
     return (
         <>
             <main>
-                <aside>
+                <aside className={ activeBar ? 'activeBar' : 'desactiveBar' }>
                     <div className="toggle">
                         <div className="logo">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Banco_Caja_Social_logo.svg/2560px-Banco_Caja_Social_logo.svg.png" alt="logo" />
                 
                         </div>
                         <div className='close'>
-                            <span className="material-symbols-outlined"> close </span>
+                            <span 
+                            onClick={() => handleMenuBar()}
+                            className="material-symbols-outlined"> close </span>
                         </div> 
                     </div>
                     <div className="sidebar">
