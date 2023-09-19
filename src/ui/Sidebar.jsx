@@ -7,17 +7,17 @@ export const Sidebar = ({ activeBar, handleMenuBar }) => {
     return (
         <>
             <main>
-                <aside className={ activeBar ? 'activeBar' : 'desactiveBar' }>
+                <aside className={activeBar ? 'activeBar' : 'desactiveBar'}>
                     <div className="toggle">
                         <div className="logo">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Banco_Caja_Social_logo.svg/2560px-Banco_Caja_Social_logo.svg.png" alt="logo" />
-                
+
                         </div>
                         <div className='close'>
-                            <span 
-                            onClick={() => handleMenuBar()}
-                            className="material-symbols-outlined"> close </span>
-                        </div> 
+                            <span
+                                onClick={() => handleMenuBar()}
+                                className="material-symbols-outlined"> close </span>
+                        </div>
                     </div>
                     <div className="sidebar">
                         <Link to='/noticias' className='link '>
@@ -30,11 +30,11 @@ export const Sidebar = ({ activeBar, handleMenuBar }) => {
                         </Link>
                         <Link to='/ironllegada' className='link'>
                             <span className="material-symbols-outlined"> circles_ext </span>
-                            <h3>Iron Llegada</h3>
+                            <h3>Llegada</h3>
                         </Link>
                         <Link to='/ironsalida' className='link'>
                             <span className="material-symbols-outlined"> pip_exit </span>
-                            <h3>Iron Salida</h3>
+                            <h3>Salida</h3>
                         </Link>
                         <Link to='/usuarios' className='link'>
                             <span className="material-symbols-outlined"> person_outline </span>
@@ -56,5 +56,5 @@ export const Sidebar = ({ activeBar, handleMenuBar }) => {
                 </aside>
             </main>
         </>
-      )
+    )
 }

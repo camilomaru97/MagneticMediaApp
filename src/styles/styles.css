@@ -59,3 +59,52 @@ body{
 a{
     color: var(--color-dark);
 }
+
+img {
+    max-width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  
+h1{
+    font-weight: 800;
+    font-size: 1.6rem;
+}
+  
+h2{
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+  
+h3{
+    font-weight: 500;
+    font-size: 0.90rem;
+}
+  
+small{
+    font-size: 0.76rem;
+}
+  
+p{
+    color: var(--color-dark-variant);
+}
+  
+b{
+    color: var(--color-dark);
+}
+  
+.primary{
+    color: var(--color-primary);
+}
+  
+.danger{
+    color: var(--color-danger);
+}
+  
+.success{
+    color: var(--color-success);
+}
+  
+.warning{
+    color: var(--color-warning);
+}

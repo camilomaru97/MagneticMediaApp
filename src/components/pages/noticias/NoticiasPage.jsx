@@ -2,6 +2,7 @@ import { Sidebar } from "../../../ui/sidebar"
 import '../../../styles/components/noticiaspage.css'
 import { Link } from "react-router-dom"
 import { useState } from "react"
+import { MenuOpciones } from "../../../ui/MenuOpciones"
 
 export const NoticiasPage = () => {
 
@@ -9,13 +10,14 @@ export const NoticiasPage = () => {
 
     const handleMenuBar = () => {
         setActiveBar(!activeBar)
+        console.log(activeBar)
     }
 
   return (
     <div className="container">
       <Sidebar 
+        handleMenuBar={handleMenuBar}
         activeBar={activeBar} 
-        handleMenuBar={handleMenuBar} 
       />
       <main>
         <h1>Noticias</h1>
@@ -77,8 +79,9 @@ export const NoticiasPage = () => {
         {/* Empleado del mes */}
 
         <div className="nuevos_empleados">
-          <h2>Empleados del Mes</h2>
+          
           <div className="lista_empleados">
+            <h2>Empleados del Mes</h2>
             <div className="empleado">
               <img src="https://media.istockphoto.com/id/1171169107/es/foto/retrato-de-joven-hombre-cauc%C3%A1sico-sonriente-con-los-brazos-cruzados-usando-reloj-inteligente-y.jpg?s=612x612&w=0&k=20&c=QQdny314cfuKaZX3HuqzAKKqVd5HIrWPZjdZvPAlCY8=" alt="empleado" />
               <h2>Camilo</h2>
@@ -105,7 +108,6 @@ export const NoticiasPage = () => {
         {/* Catalogos Recientes */}
 
         <div className="catalogos_recientes">
-          <h2>Catalogos Recientes</h2>
           <table>
             <thead>
               <tr>
@@ -134,72 +136,14 @@ export const NoticiasPage = () => {
                 <td>En transito</td>
                 <td>Cali</td>
               </tr>
-              <tr>
-                <td>Jairo</td>
-                <td>07/18/2023</td>
-                <td>En transito</td>
-                <td>Cali</td>
-              </tr>
             </tbody>
           </table>
           <Link to="/catalogo" className="btn">Ver todos</Link>
         </div>
       </main>
-
-
-      {/* Menu derecha */}
-      <div className="menu_opciones">
-          <div className="nav">
-            <button
-            >
-              <span 
-                onClick={handleMenuBar}
-                className="material-symbols-outlined"
-              >
-                menu
-              </span>
-            </button>
-            <div className="dark-mode">
-              <span className="material-symbols-outlined active">
-                  light_mode
-              </span>
-              <span className="material-symbols-outlined">
-                  dark_mode
-              </span>
-            </div>
-
-            <div className="perfil_usuario">
-              <div className="info">
-                <p>hey, <b>Cam</b></p>
-                <small className="text-muted">Admin</small>
-              </div>
-              <div className="foto_perfil">
-                <img src="https://media.istockphoto.com/id/1171169107/es/foto/retrato-de-joven-hombre-cauc%C3%A1sico-sonriente-con-los-brazos-cruzados-usando-reloj-inteligente-y.jpg?s=612x612&w=0&k=20&c=QQdny314cfuKaZX3HuqzAKKqVd5HIrWPZjdZvPAlCY8=" alt="empleado" />
-              </div>
-            </div>
-          </div>
-
-
-
-          <div className="user_profile">
-              <div className="logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Banco_Caja_Social_logo.svg/2560px-Banco_Caja_Social_logo.svg.png" alt="logo" />
-                <h2>Banco Caja Social</h2>
-                <p>Administrado Cintoteca Bogota</p>
-              </div>
-          </div>
-
-          <div className="recordatorios">
-                <div className="header">
-                  <h2>Recordatorios</h2>
-                  <span className="material-symbols-outlined">
-                    notifications_none
-                  </span>
-                </div>
-              </div>
-        </div>
-
-
+      <MenuOpciones 
+        handleMenuBar={handleMenuBar}   
+      />      
     </div>
   )
 }
