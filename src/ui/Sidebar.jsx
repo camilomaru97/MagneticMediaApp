@@ -20,31 +20,35 @@ export const Sidebar = ({ activeBar, handleMenuBar }) => {
                         </div> 
                     </div>
                     <div className="sidebar">
-                        <Link to='/catalogo' className='link'>
+                        <Link to='/noticias' className='link '>
                             <span className="material-symbols-outlined"> dashboard </span>
                             <h3>Dashboard</h3>
                         </Link>
                         <Link to='/catalogo' className='link active'>
+                            <span className="material-symbols-outlined"> ballot </span>
+                            <h3>Catalogo</h3>
+                        </Link>
+                        <Link to='/ironllegada' className='link'>
+                            <span className="material-symbols-outlined"> circles_ext </span>
+                            <h3>Iron Llegada</h3>
+                        </Link>
+                        <Link to='/ironsalida' className='link'>
+                            <span className="material-symbols-outlined"> pip_exit </span>
+                            <h3>Iron Salida</h3>
+                        </Link>
+                        <Link to='/usuarios' className='link'>
                             <span className="material-symbols-outlined"> person_outline </span>
-                            <h3>Users</h3>
+                            <h3>Usuarios</h3>
                         </Link>
-                        <Link to='/catalogo' className='link'>
-                            <span className="material-symbols-outlined"> receipt_long </span>
-                            <h3>History</h3>
-                        </Link>
-                        <Link to='/catalogo' className='link'>
+                        <Link to='/analitica' className='link'>
                             <span className="material-symbols-outlined"> insights </span>
-                            <h3>Analytics</h3>
+                            <h3>Analiticas</h3>
                         </Link>
-                        <Link to='/catalogo' className='link'>
+                        <Link to='/ventas' className='link'>
                             <span className="material-symbols-outlined"> inventory </span>
-                            <h3>Sales</h3>
+                            <h3>Ventas</h3>
                         </Link>
-                        <Link to='/catalogo' className='link'>
-                            <span className="material-symbols-outlined"> report </span>
-                            <h3>Reportes</h3>
-                        </Link>
-                        <Link to='/catalogo' className='link'>
+                        <Link to='/auth' className='link'>
                             <span className="material-symbols-outlined"> logout </span>
                             <h3>Logout</h3>
                         </Link>
