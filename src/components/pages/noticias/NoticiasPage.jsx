@@ -1,4 +1,4 @@
-import { Sidebar } from "../../../ui/sidebar"
+import { Sidebar } from "../../../ui/Sidebar"
 import '../../../styles/components/noticiaspage.css'
 import { Link } from "react-router-dom"
 import { useState } from "react"
