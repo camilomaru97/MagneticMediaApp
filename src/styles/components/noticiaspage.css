@@ -1,13 +1,11 @@
 .container{
+    height: 100vh;
     display: grid;
     width: 96%;
     margin: 0 auto;
     gap: 1.8rem;
     grid-template-columns: 12rem auto 23rem;
 }
-
-
-
 
 main{
     margin-top: 1.4rem;
@@ -304,5 +302,120 @@ main .catalogos_recientes a{
     align-items: center;
     justify-content: space-between;
     margin-bottom: 0.5rem;
+}
+
+
+@media screen and (max-width: 1200px) {
+
+    .container{
+        width: 95%;
+        grid-template-columns: 7rem auto 23rem;
+    }
+
+    main .noticias{
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    main .nuevos_empleados .lista_empleados .empleado{
+        flex-basis: 40%;
+    }
+    
+    main .catalogos_recientes {
+        width: 94%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 2rem 0 0 0.8rem;
+    }
+    
+    main .catalogos_recientes table{
+        width: 83vw;
+    }
+    
+    .catalogos_recientes table thead tr th:last-child,
+    .catalogos_recientes table thead tr th:first-child{
+        display: none;
+    }
+    
+    .catalogos_recientes table tbody tr td:last-child,
+    .catalogos_recientes table tbody tr td:first-child{
+        display: none;
+    }
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .container{
+        width: 100%;
+        grid-template-columns: 1fr;
+        padding: 0 var(--padding-1);
+    }
+
+    .activeBar{
+        display: block;
+        width: 12.8rem;
+    }
+    .desactiveBar{
+        display: none;
+    }
+
+    main .nuevos_empleados .lista_empleados .empleado{
+        flex-basis: 35%;
+    }
+
+    main .catalogos_reciente{
+        position: relative;
+        margin: 3rem 0 0 0;
+        width: 10%;
+    }
+
+    main .catalogos_reciente table{
+        width: 100%;
+        margin: 0;
+    }
+
+    .menu_opciones{
+        width: 94%;
+        margin: 23rem auto 4rem;
+    }
+
+    .menu_opciones .nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        align-items: center;
+        background-color: var(--color-white);
+        padding: 0 var(--padding-1);
+        height: 4.6rem;
+        width: 100%;
+        z-index: 2;
+        box-shadow: 0 1rem 1rem var(--color-light);
+        margin: 0;
+    }
+
+    .menu_opciones .nav .dark-mode{
+        width: 4.4rem;
+        position: absolute;
+        left: 66%;
+    }
+
+    .menu_opciones .perfil_usuario .info{
+        margin-right: -1.5rem;
+    }
+
+    .menu_opciones .nav button{
+        display: inline-block;
+        background-color: transparent;
+        cursor: pointer;
+        color: var(--color-dark);
+        position: absolute;
+        left: 1rem;
+    }
+
+    .menu_opciones .nav button span{
+        font-size: 2rem;
+    }
 }
 
