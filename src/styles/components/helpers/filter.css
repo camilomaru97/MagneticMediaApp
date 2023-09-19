@@ -1,0 +1,26 @@
+
+form {
+    margin-top: 1.5rem;
+    background-color: var(--color-white);
+    width: 100%;
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    transition: all 0.3s ease;
+    display: flex;
+}
+
+form .buscar{
+    flex-grow: 1;
+    text-align: end;
+    
+}
+
+form input[type='text']{
+    border-bottom: 2px solid var(--color-light);
+}
+
+form input {
+    margin: 0rem 2rem 0rem .5rem;
+}
