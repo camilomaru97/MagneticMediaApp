@@ -5,9 +5,11 @@ import { IronLlegada } from '../components/pages/ironLlegada/IronLlegada'
 import { IronSalida } from '../components/pages/ironSalida/IronSalida'
 import { NoticiasPage } from '../components/pages/noticias/NoticiasPage'
 import { CatalogoPage } from '../components/pages/catalogo/CatalogoPage'
+import { User } from '../components/pages/dashboardWithoutUse/User'
+import { Analytics } from '../components/pages/dashboardWithoutUse/Analytics'
+import { Sales } from '../components/pages/dashboardWithoutUse/Sales'
 
 export const RouterApp = () => {
-
     return (
         <Routes>
             <Route path='/auth/*' element={<LoginPage />} />
@@ -17,7 +19,11 @@ export const RouterApp = () => {
             <Route path='/catalogo' element={<CatalogoPage />} />
             <Route path='/noticias' element={<NoticiasPage />} />
             <Route path='/ironllegada' element={<IronLlegada />} />
-            <Route path='/ironsalida' element={<IronSalida />} />   
+            <Route path='/ironsalida' element={<IronSalida />} />
+
+            <Route path='/usuarios' element={<User />} /> 
+            <Route path='/analitica' element={<Analytics />} /> 
+            <Route path='/ventas' element={<Sales />} /> 
         </Routes>
     )
 }
