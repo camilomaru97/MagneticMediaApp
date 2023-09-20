@@ -2,9 +2,22 @@ import { MenuOpciones } from "../../../ui/MenuOpciones"
 import { Sidebar } from "../../../ui/Sidebar"
 import '../../../styles/components/catalogo.css'
 import { Filter } from "../../helpers/Filter"
+import { AddModal } from "../../../ui/AddModal"
+import { useState } from "react"
+import { EditModal } from "../../../ui/EditModal"
 
 export const CatalogoPage = () => {
 
+  const [addModal, setAddModal] = useState(false)
+  const [editModal, setEditModal] = useState(false)
+
+  const handleAddModal = () => {
+    setAddModal(!addModal)
+  }
+
+  const handleEditModal = () => {
+    setEditModal(!editModal)
+  }
 
   const tableContent = [
     { nombre: 'Camilo', fecha: '28/08/2023', estado: 'En transito'},
@@ -22,7 +35,7 @@ export const CatalogoPage = () => {
       <main>
         <div className="catalog_add">
           <h1>Catalogos</h1>
-          <span className="material-symbols-outlined add">
+          <span onClick={handleAddModal} className="material-symbols-outlined add">
             add_circle
           </span>
         </div>
@@ -47,7 +60,7 @@ export const CatalogoPage = () => {
                     <td>{row.fecha}</td>
                     <td>{row.estado}</td>
                     <td>
-                      <span title="Editar" className="material-symbols-outlined edit">
+                      <span onClick={handleEditModal} title="Editar" className="material-symbols-outlined edit">
                         edit
                       </span>
                       <span title="Eliminar" className="material-symbols-outlined delete">
@@ -62,6 +75,18 @@ export const CatalogoPage = () => {
               })
             }
           </tbody>
+          { addModal 
+            ? <AddModal 
+                handleAddModal={handleAddModal} 
+              /> 
+            : null
+          }
+          { editModal 
+            ? <EditModal 
+                handleEditModal={handleEditModal} 
+              /> 
+            : null
+          }
         </table>
         <p>{`< 7 de 20 >`}</p>
       </main>
