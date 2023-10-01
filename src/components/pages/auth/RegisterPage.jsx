@@ -1,22 +1,66 @@
 import imgBackground from '../../../assets/fondo.jpg';
 import '../../../styles/components/register.css';
-import { postUser } from '../../../actions/userActions';
-import { useDispatch } from 'react-redux';
+import { postNewUser } from '../../../actions/userActions';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import validator from 'validator';
+import { useEffect, useState } from 'react';
 
 export const RegisterPage = () => {
   const dispatch = useDispatch();
+  const errorAuth = useSelector((state) => state.user.error);
+  const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [msgError, setMsgError] = useState('');
+  const [error, setError] = useState(false);
+
+  const validateAndDispatch = (isValid, errorMsg) => {
+    setError(isValid);
+    setMsgError(errorMsg);
+    setTimeout(() => setError(false), 4000);
+  };
+
+  useEffect(() => {
+    if (errorAuth) {
+      setError(true);
+      setMsgError(errorAuth);
+      setTimeout(() => {
+        setError(false);
+      }, 5000);
+    }
+  }, [errorAuth]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const user = {
+    if (email.trim() === '' || password.trim() === '' || user.trim() === '') {
+      validateAndDispatch(true, 'Todos los campos son obligatorios');
+      return;
+    }
+    if (user.length < 6) {
+      validateAndDispatch(true, 'El usuario debe tener al menos 6 caracteres');
+      return;
+    }
+    if (!validator.isEmail(email)) {
+      validateAndDispatch(true, 'El email no es valido');
+      return;
+    }
+    if (password.match(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])/) === null) {
+      validateAndDispatch(
+        true,
+        'La contraseña debe tener al menos 1 letra mayuscula, 1 numero y 1 caracter especial'
+      );
+      return;
+    }
+    const newUser = {
+      name: user,
       email,
       password,
     };
-    // dispatch(postUser(user));
+    dispatch(postNewUser(newUser));
+    setUser('');
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -50,8 +94,8 @@ export const RegisterPage = () => {
           <input
             type="text"
             placeholder="Usuario"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
           />
           <input
             type="text"
@@ -75,6 +119,15 @@ export const RegisterPage = () => {
             <span style={{ color: '#03a9f0' }}>Iniciar sesion</span>
           </p>
         </Link>
+        {error && (
+          <h4
+
+            style={{ fontWeight: '400', fontSize: '1rem', width: '84%', textAlign: 'center' }}
+            className="errorLogin"
+          >
+            {msgError}
+          </h4>
+        )}
       </main>
       <div className="img_section">
         <img src={imgBackground} alt="login" />

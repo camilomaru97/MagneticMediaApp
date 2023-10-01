@@ -7,6 +7,7 @@ import '../src/styles/styles.css'
 
 
 export const MagneticMedia = () => {
+  
   return (
     <Provider store={store}>
       <BrowserRouter>
