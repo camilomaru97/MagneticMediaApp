@@ -2,7 +2,7 @@ import '../../styles/components/helpers/filter.css'
 
 export const Filter = () => {
     return (
-        <form>
+        <form className='filter_form'>
             <label className='date'> 
                 Fecha de inicio:
             </label>
