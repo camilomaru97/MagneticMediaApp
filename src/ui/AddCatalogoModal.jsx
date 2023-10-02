@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import '../styles/ui/addcatalogomodal.css';
+import { useCatalogo } from '../hooks/useCatalogo';
 
 export const AddCatalogoModal = ({ handleAddModal }) => {
-    
   const [msgError, setMsgError] = useState(null);
+  const { onPostCatalogo } = useCatalogo();
   const [inputsCatalogo, setInputsCatalogo] = useState({
-    numeroIp: '',
-    nombreServidor: '',
-    nombreCatalogo: '',
+    numero_ip: '',
+    nombre_servidor: '',
+    nombre_catalogo: '',
     consola: '',
     ciclo: '',
     programa: '',
@@ -31,28 +32,28 @@ export const AddCatalogoModal = ({ handleAddModal }) => {
       setTimeout(() => {
         setMsgError(null);
       }, 3000);
-      return
+      return;
     }
     if (
-      inputsCatalogo.nombreCatalogo.length < 4 ||
-      inputsCatalogo.nombreCatalogo.length > 30
+      inputsCatalogo.nombre_catalogo.length < 4 ||
+      inputsCatalogo.nombre_catalogo.length > 30
     ) {
       setMsgError('El nombre del catalogo debe tener entre 4 y 30 caracteres');
       setTimeout(() => {
         setMsgError(null);
       }, 3000);
-      return
+      return;
     }
-    // todo: console.log('enviar datos al backend');
-    console.log(inputsCatalogo);
+    onPostCatalogo(inputsCatalogo);
+    handleAddModal()
     setInputsCatalogo({
-        numeroIp: '',
-        nombreServidor: '',
-        nombreCatalogo: '',
-        consola: '',
-        ciclo: '',
-        programa: '',
-        tecnologia: '',
+      numero_ip: '',
+      nombre_servidor: '',
+      nombre_catalogo: '',
+      consola: '',
+      ciclo: '',
+      programa: '',
+      tecnologia: '',
     });
   };
 
@@ -70,22 +71,22 @@ export const AddCatalogoModal = ({ handleAddModal }) => {
           onChange={hanldeOnChange}
           type="text"
           placeholder="Numero Ip"
-          value={inputsCatalogo.numeroIp}
-          name="numeroIp"
+          value={inputsCatalogo.numero_ip}
+          name="numero_ip"
         />
         <input
           onChange={hanldeOnChange}
           type="text"
           placeholder="Nombre Servidor"
-          value={inputsCatalogo.nombreServidor}
-          name="nombreServidor"
+          value={inputsCatalogo.nombre_servidor}
+          name="nombre_servidor"
         />
         <input
           onChange={hanldeOnChange}
           type="text"
           placeholder="Nombre Catalogo"
-          value={inputsCatalogo.nombreCatalogo}
-          name="nombreCatalogo"
+          value={inputsCatalogo.nombre_catalogo}
+          name="nombre_catalogo"
         />
         <select
           value={inputsCatalogo.consola}

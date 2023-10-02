@@ -1,5 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getCatalogos } from '../actions/catalogoActions';
+import {
+  deleteCatalogo,
+  getCatalogoById,
+  getCatalogos,
+  postCatalogo,
+  putCatalogo,
+} from '../actions/catalogoActions';
 import { useEffect } from 'react';
 
 export const useCatalogo = () => {
@@ -7,20 +13,29 @@ export const useCatalogo = () => {
   const catalogos = useSelector((state) => state?.catalogo?.catalogos);
   const dispatch = useDispatch();
 
-
-  const tableContent = [
-    { nombre: 'Camilo', fecha: '28/08/2023', estado: 'En transito'},
-    { nombre: 'Angie', fecha: '11/02/2023', estado: 'Activo'},
-    { nombre: 'Cristian', fecha: '02/11/2023', estado: 'En transito'},
-    { nombre: 'Andrea', fecha: '22/10/2023', estado: 'En transito'},
-    { nombre: 'Maria', fecha: '18/04/2023', estado: 'Finalizado'},
-  ]
-
   useEffect(() => {
     dispatch(getCatalogos(token));
   }, []);
 
+  const onGetCatalogoById = (id) => {
+    console.log(id)
+    dispatch(getCatalogoById(token, id));
+  };
+  const onPostCatalogo = (catalogo) => {
+    dispatch(postCatalogo(token, catalogo));
+  };
+  const onPutCatalogo = (catalogo, id) => {
+    dispatch(putCatalogo(token, catalogo, id));
+  };
+  const onDeleteCatalogo = (id) => {
+    dispatch(deleteCatalogo(token, id));
+  };
+
   return {
-    catalogos
-  }
+    catalogos,
+    onGetCatalogoById,
+    onPostCatalogo,
+    onPutCatalogo,
+    onDeleteCatalogo,
+  };
 };

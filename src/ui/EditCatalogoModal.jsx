@@ -1,17 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import '../styles/ui/editcatalogomodal.css';
+import { useCatalogo } from '../hooks/useCatalogo';
 
-export const EditCatalogoModal = ({ handleEditModal }) => {
+export const EditCatalogoModal = ({ handleEditModal, catalogoId }) => {
+  const catalogos = useSelector((state) => state.catalogo.catalogos);
   const [msgError, setMsgError] = useState(null);
   const [inputsCatalogo, setInputsCatalogo] = useState({
-    numeroIp: '',
-    nombreServidor: '',
-    nombreCatalogo: '',
+    numero_ip: '',
+    nombre_servidor: '',
+    nombre_catalogo: '',
     consola: '',
     ciclo: '',
     programa: '',
     tecnologia: '',
   });
+  const { onPutCatalogo } = useCatalogo();
+  const getCatalogoById = catalogos?.find(
+    (catalogo) => catalogo.id === catalogoId
+  );
+
+  useEffect(() => {
+    setInputsCatalogo({
+      numero_ip: getCatalogoById?.numero_ip,
+      nombre_servidor: getCatalogoById?.nombre_servidor,
+      nombre_catalogo: getCatalogoById?.nombre_catalogo,
+      consola: getCatalogoById?.consola,
+      ciclo: getCatalogoById?.ciclo,
+      programa: getCatalogoById?.programa,
+      tecnologia: getCatalogoById?.tecnologia,
+    });
+  }, [getCatalogoById]);
 
   const hanldeOnChange = (e) => {
     setInputsCatalogo({
@@ -30,28 +49,28 @@ export const EditCatalogoModal = ({ handleEditModal }) => {
       setTimeout(() => {
         setMsgError(null);
       }, 3000);
-      return 
+      return;
     }
     if (
-      inputsCatalogo.nombreCatalogo.length < 4 ||
-      inputsCatalogo.nombreCatalogo.length > 30
+      inputsCatalogo.nombre_catalogo.length < 4 ||
+      inputsCatalogo.nombre_catalogo.length > 30
     ) {
       setMsgError('El nombre del catalogo debe tener entre 4 y 30 caracteres');
       setTimeout(() => {
         setMsgError(null);
       }, 3000);
-      return
+      return;
     }
-    // TODO: console.log('enviar datos al backend');
-    console.log(inputsCatalogo);
+    onPutCatalogo(inputsCatalogo, catalogoId);
+    handleEditModal();
     setInputsCatalogo({
-        numeroIp: '',
-        nombreServidor: '',
-        nombreCatalogo: '',
-        consola: '',
-        ciclo: '',
-        programa: '',
-        tecnologia: '',
+      numero_ip: '',
+      nombre_servidor: '',
+      nombre_catalogo: '',
+      consola: '',
+      ciclo: '',
+      programa: '',
+      tecnologia: '',
     });
   };
 
@@ -69,22 +88,22 @@ export const EditCatalogoModal = ({ handleEditModal }) => {
           onChange={hanldeOnChange}
           type="text"
           placeholder="Numero IP"
-          value={inputsCatalogo.numeroIp}
-          name="numeroIp"
+          value={inputsCatalogo.numero_ip}
+          name="numero_ip"
         />
         <input
           onChange={hanldeOnChange}
           type="text"
           placeholder="Nombre Servidor"
-          value={inputsCatalogo.nombreServidor}
-          name="nombreServidor"
+          value={inputsCatalogo.nombre_servidor}
+          name="nombre_servidor"
         />
         <input
           onChange={hanldeOnChange}
           type="text"
           placeholder="Nombre Catalogo"
-          value={inputsCatalogo.nombreCatalogo}
-          name="nombreCatalogo"
+          value={inputsCatalogo.nombre_catalogo}
+          name="nombre_catalogo"
         />
         <select
           onChange={hanldeOnChange}
