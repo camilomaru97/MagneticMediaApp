@@ -12,20 +12,22 @@ import { ShowCatalogoId } from '../../../ui/ShowCatalogoId';
 export const CatalogoPage = () => {
   const [addModal, setAddModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
+  const [catalogoId, setCatalogoId] = useState('')
   const [infoModal, setInfoModal] = useState(false);
 
-  const { catalogos } = useCatalogo();
-  console.log(catalogos);
+  const { catalogos, onDeleteCatalogo, onGetCatalogoById } = useCatalogo();
 
   const handleAddModal = () => {
     setAddModal(!addModal);
   };
 
-  const handleEditModal = () => {
+  const handleEditModal = (id) => {
+    setCatalogoId(id)
     setEditModal(!editModal);
   };
 
-  const handleInfoModal = () => {
+  const handleInfoModal = (id) => {
+    onGetCatalogoById(id)
     setInfoModal(!infoModal);
   };
 
@@ -65,20 +67,21 @@ export const CatalogoPage = () => {
                   </td>
                   <td>
                     <span
-                      onClick={handleEditModal}
+                      onClick={() => handleEditModal(catalogo.id)}
                       title="Editar"
                       className="material-symbols-outlined edit"
                     >
                       edit
                     </span>
                     <span
+                      onClick={() => onDeleteCatalogo(catalogo.id)}
                       title="Eliminar"
                       className="material-symbols-outlined delete"
                     >
                       delete
                     </span>
                     <span
-                      onClick={handleInfoModal}
+                      onClick={() => handleInfoModal(catalogo.id)}
                       title="Ver"
                       className="material-symbols-outlined delete"
                     >
@@ -93,7 +96,7 @@ export const CatalogoPage = () => {
             <AddCatalogoModal handleAddModal={handleAddModal} />
           ) : null}
           {editModal ? (
-            <EditCatalogoModal handleEditModal={handleEditModal} />
+            <EditCatalogoModal catalogoId={catalogoId} handleEditModal={handleEditModal} />
           ) : null}
           {infoModal ? (
             <ShowCatalogoId handleInfoModal={handleInfoModal} />
