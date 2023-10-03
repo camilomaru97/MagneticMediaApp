@@ -20,7 +20,10 @@ export const EditCatalogoModal = ({ handleEditModal, catalogoId }) => {
     (catalogo) => catalogo.id === catalogoId
   );
 
+  
+
   useEffect(() => {
+    console.log(getCatalogoById)
     setInputsCatalogo({
       numero_ip: getCatalogoById?.numero_ip,
       nombre_servidor: getCatalogoById?.nombre_servidor,

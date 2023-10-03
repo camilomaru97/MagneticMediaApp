@@ -69,7 +69,7 @@ export const NoticiasPage = () => {
                   <circle cx='38' cy='38' r='36'></circle>
                 </svg>
                 <div className="porcentaje">
-                  <p>20%</p>
+                  <p>+20%</p>
                 </div>
               </div>
             </div>

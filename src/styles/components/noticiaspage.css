@@ -102,18 +102,18 @@ main .noticias .guardado_noticias svg circle{
 
 .noticias .guardado_noticias .status_noticias .progress .porcentaje {
     position: absolute;
-    top: 39%;
-    right: 24%;
+    top: 30%;
+    right: 16%;
 }
 .noticias .guardado_ironsalida .status_noticias .progress .porcentaje {
     position: absolute;
-    top: 39%;
-    right: 24%;
+    top: 30%;
+    right: 16%;
 }
 .noticias .guardado_ironllegada .status_noticias .progress .porcentaje {
     position: absolute;
-    top: 39%;
-    right: 24%;
+    top: 30%;
+    right: 16%;
 }
 
 main .noticias .guardado_ironsalida svg circle{
@@ -217,6 +217,10 @@ main .catalogos_recientes a{
         grid-template-columns: 7rem auto 23rem;
     }
 
+    main .nuevos_empleados{
+        margin-top: 0;
+    }
+
     main .noticias{
         grid-template-columns: 1fr;
         gap: 0;
@@ -224,18 +228,18 @@ main .catalogos_recientes a{
 
     .noticias .guardado_noticias .status_noticias .progress .porcentaje {
         position: absolute;
-        top: 39%;
-        right: 24%;
+        top: 30%;
+        right: 17%;
     }
     .noticias .guardado_ironsalida .status_noticias .progress .porcentaje {
         position: absolute;
-        top: 39%;
-        right: 24%;
+        top: 30%;
+        right: 17%;
     }
     .noticias .guardado_ironllegada .status_noticias .progress .porcentaje {
         position: absolute;
-        top: 39%;
-        right: 24%;
+        top: 30%;
+        right: 17%;
     }
     
     main .nuevos_empleados .lista_empleados .empleado{
@@ -290,18 +294,18 @@ main .catalogos_recientes a{
 
     .noticias .guardado_noticias .status_noticias .progress .porcentaje {
         position: absolute;
-        top: 39%;
-        right: 22%;
+        top: 30%;
+        right: 14%;
     }
     .noticias .guardado_ironsalida .status_noticias .progress .porcentaje {
         position: absolute;
-        top: 39%;
-        right: 22%;
+        top: 30%;
+        right: 14%;
     }
     .noticias .guardado_ironllegada .status_noticias .progress .porcentaje {
         position: absolute;
-        top: 39%;
-        right: 22%;
+        top: 30%;
+        right: 14%;
     }
 
     main .nuevos_empleados .lista_empleados .empleado{

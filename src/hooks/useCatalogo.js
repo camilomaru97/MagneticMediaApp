@@ -18,7 +18,6 @@ export const useCatalogo = () => {
   }, []);
 
   const onGetCatalogoById = (id) => {
-    console.log(id)
     dispatch(getCatalogoById(token, id));
   };
   const onPostCatalogo = (catalogo) => {

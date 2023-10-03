@@ -1,4 +1,6 @@
+import { useDispatch } from 'react-redux';
 import { clientAxios } from '../config/axios';
+import { deleteCatalogoError } from '../actions/catalogoActions';
 
 export const getCatalogosApi = async (token) => {
   const headers = { 'x-token': token };
@@ -30,12 +32,12 @@ export const getCatalogoByIdApi = async (token, id) => {
   }
 };
 
-export const deleteCatalogoApi = async (token, id) => {
+export const deleteCatalogoApi = async (token, id, dispatch) => {
   const headers = { 'x-token': token };
   try {
-    const { data } = await clientAxios.delete(`/catalogo/${id}`, { headers });
-    return data;
+    await clientAxios.delete(`/catalogo/${id}`, { headers });
   } catch (error) {
+    dispatch(deleteCatalogoError(error.response.data.msg))
     throw new Error(error);
   }
 };
