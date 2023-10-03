@@ -11,6 +11,7 @@ import {
 
 const initialState = {
   token: null,
+  id: null,
   status: 'not-authenticated',
   loading: false,
   error: null,
@@ -27,6 +28,7 @@ export const userReducer = (state = initialState, action) => {
         loading: false,
         token: action.payload.token,
         user: action.payload.name,
+        id: action.payload.uid
       };
 
     case CREATE_USER_REJECTED:

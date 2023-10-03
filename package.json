@@ -19,6 +19,7 @@
     "redux": "^4.2.1",
     "redux-promise-middleware-actions": "^3.1.0",
     "redux-thunk": "^2.4.2",
+    "sweetalert2": "^11.7.31",
     "validator": "^13.11.0"
   },
   "devDependencies": {

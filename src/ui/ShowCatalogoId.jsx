@@ -1,6 +1,11 @@
+import { useSelector } from 'react-redux';
 import '../styles/ui/showcatalogo.css'
+import moment from 'moment';
 
 export const ShowCatalogoId = ({ handleInfoModal }) => {
+
+  const catalogoById = useSelector(state => state?.catalogo?.catalogoById)
+  console.log(catalogoById)
 
   return (
     <div className="info_modal">
@@ -11,17 +16,21 @@ export const ShowCatalogoId = ({ handleInfoModal }) => {
       >
         close
       </span>
-      <section className='info_modal_box'>
-        <p>Ciclo: &nbsp; <span> Mensual </span></p>
-        <p>Consola: &nbsp; <span> Suba </span></p>
-        <p>Programa: &nbsp; <span> Dataprotector </span></p>
-        <p>Tecnologia: &nbsp; <span> LT06 </span></p>
-        <p>Numero Ip: &nbsp; <span> 123.145.121.567 </span></p>
-        <p>Nombre Usuario: &nbsp; <span> Camilo </span></p>
-        <p>Nombre Servidor: &nbsp; <span> servidor202934167 </span></p>
-        <p>Nombre Catalogo: &nbsp; <span> ABCD12312AADVF1231 </span></p>
-        <p>Fecha de creación: &nbsp; <span> 01/10/2023 03:02:44 pm </span></p>
-      </section>
+        {
+          catalogoById &&
+          <section className='info_modal_box'>
+              <p>Ciclo: &nbsp; <span> { catalogoById.ciclo || '' } </span></p>
+              <p>Consola: &nbsp; <span> { catalogoById.consola || '' } </span></p>
+              <p>Programa: &nbsp; <span> { catalogoById.programa || '' } </span></p>
+              <p>Tecnologia: &nbsp; <span> { catalogoById.tecnologia || '' } </span></p>
+              <p>Numero Ip: &nbsp; <span> { catalogoById.numero_ip || '' } </span></p>
+              <p>Nombre Usuario: &nbsp; <span> { catalogoById.usuario.name || '' } </span></p>
+              <p>Nombre Servidor: &nbsp; <span> { catalogoById.nombre_servidor || '' } </span></p>
+              <p>Nombre Catalogo: &nbsp; <span> { catalogoById.nombre_catalogo || '' } </span></p>
+              <p>Fecha de creación: &nbsp; <span> { moment(catalogoById.createAt).format('DD/MM/YYYY hh:mm:ss a') || '' } </span></p>
+          </section>
+        }
+        
     </div>
   );
 };

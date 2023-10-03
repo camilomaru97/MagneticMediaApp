@@ -78,6 +78,26 @@
     color: white;
 }
 
+.edit_modal_form button:disabled {
+    background-color: #558ecf;
+    color: white;
+    cursor: not-allowed;
+}
+.edit_modal_form input:disabled {
+    background-color: transparent;
+    color: var(--color-info-dark);
+    cursor: not-allowed;
+}
+.edit_modal_form select:disabled {
+    background-color: transparent;
+    color: var(--color-info-dark);
+    cursor: not-allowed;
+}
+
+
+
+
+
 .edit_modal .error{
     text-align: center;
     width: 100%;
