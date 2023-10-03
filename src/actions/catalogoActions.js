@@ -1,4 +1,10 @@
-import { deleteCatalogoApi, getCatalogoByIdApi, getCatalogosApi, postCatalogoApi, updateCatalogoApi } from "../services/catalogoService"
+import { 
+    deleteCatalogoApi, 
+    getCatalogoByIdApi, 
+    getCatalogosApi, 
+    postCatalogoApi,
+    updateCatalogoApi 
+} from "../services/catalogoService"
 import { 
     GET_CATALOGO_PENDING, 
     GET_CATALOGO_REJECTED, 
@@ -12,6 +18,10 @@ import {
     CREATE_CATALOGO_SUCCESS,
     CREATE_CATALOGO_REJECTED,
     CREATE_CATALOGO_PENDING,
+    UPDATE_GET_CATALOGO,
+    UPDATE_CATALOGO_PENDING,
+    UPDATE_CATALOGO_REJECTED,
+    UPDATE_CATALOGO_SUCCESS,
 } from "./types"
 
 //Obtener todos lso catalogos
@@ -66,14 +76,22 @@ export const postCataloSuccess = ( payload ) => ({ type: CREATE_CATALOGO_SUCCESS
 
 // Actualizar Catalogo
 export const putCatalogo = (token, catalogo, id) => {
+    console.log(id)
     return async (dispatch) => {
+        dispatch(updateCataloPending())
         try {
             const data = await updateCatalogoApi(token, catalogo, id)
+            console.log(data)
+            dispatch(updateCataloSuccess(data.catalogo))
         } catch (error) {
-            throw new Error(error)
+            dispatch(updateCataloError(error))
         }
     }
 }
+export const updateGetCatalogo = (payload) => ({ type: UPDATE_GET_CATALOGO, payload })
+export const updateCataloPending = () => ({ type: UPDATE_CATALOGO_PENDING })
+export const updateCataloError = ( payload ) => ({ type: UPDATE_CATALOGO_REJECTED, payload })
+export const updateCataloSuccess = ( payload ) => ({ type: UPDATE_CATALOGO_SUCCESS, payload })
 
 // Eliminar Catalogo
 export const deleteCatalogo = (token, id) => {

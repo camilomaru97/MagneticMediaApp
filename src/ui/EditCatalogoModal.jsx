@@ -5,6 +5,8 @@ import { useCatalogo } from '../hooks/useCatalogo';
 
 export const EditCatalogoModal = ({ handleEditModal, catalogoId }) => {
   const catalogos = useSelector((state) => state.catalogo.catalogos);
+  const catalogosToUpdate = useSelector((state) => state.catalogo.catalogoToUpdate[0]);
+  const user = useSelector((state) => state.user);
   const [msgError, setMsgError] = useState(null);
   const [inputsCatalogo, setInputsCatalogo] = useState({
     numero_ip: '',
@@ -20,10 +22,16 @@ export const EditCatalogoModal = ({ handleEditModal, catalogoId }) => {
     (catalogo) => catalogo.id === catalogoId
   );
 
+  useEffect( () => {
+    const validUserCatalogo = catalogosToUpdate?.usuario?._id === user.id;
+    !validUserCatalogo
+    ? setMsgError('No tienes permisos para editar este catalogo')
+    : setMsgError(null);
+  }, [user.id])
+
   
 
   useEffect(() => {
-    console.log(getCatalogoById)
     setInputsCatalogo({
       numero_ip: getCatalogoById?.numero_ip,
       nombre_servidor: getCatalogoById?.nombre_servidor,
@@ -149,11 +157,11 @@ export const EditCatalogoModal = ({ handleEditModal, catalogoId }) => {
           <option value="LT06">LT06</option>
           <option value="LT04">LT04</option>
         </select>
-        <button type="submit">Editar Catalogo</button>
+        <button disabled={msgError} type="submit">Editar Catalogo</button>
       </form>
       {msgError && (
         <div className="error">
-          <p>{msgError}</p>
+          <p style={{fontWeight: '400'}}>{msgError}</p>
         </div>
       )}
     </div>

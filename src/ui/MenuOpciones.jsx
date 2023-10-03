@@ -1,7 +1,10 @@
 
+import { useSelector } from 'react-redux'
 import '../styles/ui/menuopciones.css'
 
 export const MenuOpciones = ({ handleMenuBar }) => {
+
+  const name = useSelector(state => state.user.user)
 
   return (
     <div className="menu_opciones">
@@ -26,7 +29,7 @@ export const MenuOpciones = ({ handleMenuBar }) => {
 
         <div className="perfil_usuario">
           <div className="info">
-            <p><b>Camilo</b></p>
+            <p><b>{ name }</b></p>
             <small className="text-muted">Admin</small>
           </div>
           <div className="foto_perfil">
