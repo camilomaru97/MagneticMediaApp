@@ -8,7 +8,8 @@ import moment from 'moment/moment';
 import { AddCatalogoModal } from '../../../ui/AddCatalogoModal';
 import { EditCatalogoModal } from '../../../ui/EditCatalogoModal';
 import { ShowCatalogoId } from '../../../ui/ShowCatalogoId';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateGetCatalogo } from '../../../actions/catalogoActions';
 
 export const CatalogoPage = () => {
   const [addModal, setAddModal] = useState(false);
@@ -20,12 +21,14 @@ export const CatalogoPage = () => {
   const { catalogos, onDeleteCatalogo, onGetCatalogoById } = useCatalogo();
   const user = useSelector((state) => state?.user.user);
   const error = useSelector((state) => state?.catalogo.error);
+  const dispatch = useDispatch()
 
   const handleAddModal = () => {
     setAddModal(!addModal);
   };
 
   const handleEditModal = (id) => {
+    dispatch(updateGetCatalogo(id));
     setCatalogoId(id);
     setEditModal(!editModal);
   };
@@ -124,7 +127,7 @@ export const CatalogoPage = () => {
         </table>
         <div style={{ display: 'flex', justifyContent: 'space-around' }}>
           {errorState && (
-            <p style={{ marginLeft: '-13rem', color: '#FF0060' }}>{error}</p>
+            <p style={{ marginLeft: '-13rem', color: '#FF0060', }}>{error}</p>
           )}
           <p>{`< 7 de 20 >`}</p>
         </div>

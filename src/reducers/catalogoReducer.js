@@ -11,6 +11,10 @@ import {
   CREATE_CATALOGO_PENDING,
   CREATE_CATALOGO_REJECTED,
   CREATE_CATALOGO_SUCCESS,
+  UPDATE_GET_CATALOGO,
+  UPDATE_CATALOGO_REJECTED,
+  UPDATE_CATALOGO_PENDING,
+  UPDATE_CATALOGO_SUCCESS,
 } from '../actions/types';
 
 const initialState = {
@@ -18,6 +22,7 @@ const initialState = {
   loading: false,
   error: null,
   catalogoById: null,
+  catalogoToUpdate: null
 };
 
 export const catalogoReducer = (state = initialState, action) => {
@@ -25,6 +30,7 @@ export const catalogoReducer = (state = initialState, action) => {
     case CREATE_CATALOGO_PENDING:
     case GET_ID_CATALOGO_PENDING:
     case DELETE_CATALOGO_PENDING:
+    case UPDATE_CATALOGO_PENDING:
     case GET_CATALOGO_PENDING:
       return {
         ...state,
@@ -35,6 +41,7 @@ export const catalogoReducer = (state = initialState, action) => {
     case CREATE_CATALOGO_REJECTED:
     case GET_ID_CATALOGO_REJECTED:
     case DELETE_CATALOGO_REJECTED:
+    case UPDATE_CATALOGO_REJECTED:
     case GET_CATALOGO_REJECTED:
       return {
         ...state,
@@ -73,6 +80,22 @@ export const catalogoReducer = (state = initialState, action) => {
           action.payload
         ]
       };
+    
+    case UPDATE_GET_CATALOGO:
+      return {
+        ...state,
+        catalogoToUpdate: state.catalogos.filter( catalogo => catalogo.id === action.payload)
+      }
+    
+    case UPDATE_CATALOGO_SUCCESS:
+      return {
+        ...state,
+        catalogos: state.catalogos.map( catalogo =>  
+            catalogo.id === action.payload.id
+            ? catalogo = action.payload
+            : catalogo
+          ) 
+      }
 
     default:
       return state;
