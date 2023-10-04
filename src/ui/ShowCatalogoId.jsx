@@ -5,7 +5,6 @@ import moment from 'moment';
 export const ShowCatalogoId = ({ handleInfoModal }) => {
 
   const catalogoById = useSelector(state => state?.catalogo?.catalogoById)
-  console.log(catalogoById)
 
   return (
     <div className="info_modal">

@@ -6,9 +6,9 @@ import {
   postCatalogo,
   putCatalogo,
 } from '../actions/catalogoActions';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-export const useCatalogo = () => {
+export const useCatalogo = (filterSearch ) => {
   const token = useSelector((state) => state?.user?.token);
   const catalogos = useSelector((state) => state?.catalogo?.catalogos);
   const dispatch = useDispatch();
@@ -16,6 +16,25 @@ export const useCatalogo = () => {
   useEffect(() => {
     dispatch(getCatalogos(token));
   }, []);
+
+  const filteredCatalogoByDate =  [...catalogos].sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
+
+  const filters =
+    typeof filterSearch === 'string' && filterSearch.length > 0
+      ? [...catalogos].filter((catalogo) => {
+          return (
+            catalogo.usuario.name
+              .toLowerCase()
+              .includes(filterSearch.toLowerCase()) ||
+            catalogo.ciclo.toLowerCase().includes(filterSearch.toLowerCase()) ||
+            catalogo.tecnologia
+              .toLowerCase()
+              .includes(filterSearch.toLowerCase())
+          );
+        })
+      : filteredCatalogoByDate;
 
   const onGetCatalogoById = (id) => {
     dispatch(getCatalogoById(token, id));
@@ -32,6 +51,8 @@ export const useCatalogo = () => {
 
   return {
     catalogos,
+    filters,
+    filteredCatalogoByDate,
     onGetCatalogoById,
     onPostCatalogo,
     onPutCatalogo,

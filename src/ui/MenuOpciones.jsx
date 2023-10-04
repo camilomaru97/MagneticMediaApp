@@ -30,15 +30,13 @@ export const MenuOpciones = ({ handleMenuBar }) => {
         <div className="perfil_usuario">
           <div className="info">
             <p><b>{ name }</b></p>
-            <small className="text-muted">Admin</small>
+              <small className="text-muted">Admin</small>
           </div>
           <div className="foto_perfil">
             <img src="https://media.istockphoto.com/id/1171169107/es/foto/retrato-de-joven-hombre-cauc%C3%A1sico-sonriente-con-los-brazos-cruzados-usando-reloj-inteligente-y.jpg?s=612x612&w=0&k=20&c=QQdny314cfuKaZX3HuqzAKKqVd5HIrWPZjdZvPAlCY8=" alt="empleado" />
           </div>
         </div>
       </div>
-
-
 
       <div className="user_profile">
         <div className="logo">
