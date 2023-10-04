@@ -10,6 +10,7 @@ import { EditCatalogoModal } from '../../../ui/EditCatalogoModal';
 import { ShowCatalogoId } from '../../../ui/ShowCatalogoId';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateGetCatalogo } from '../../../actions/catalogoActions';
+import { Paginador } from '../../helpers/Paginador';
 
 export const CatalogoPage = () => {
   const [addModal, setAddModal] = useState(false);
@@ -17,8 +18,9 @@ export const CatalogoPage = () => {
   const [catalogoId, setCatalogoId] = useState('');
   const [infoModal, setInfoModal] = useState(false);
   const [errorState, setErrorState] = useState(false);
+  const [inputSearch, setInputSearch] = useState('');
 
-  const { catalogos, onDeleteCatalogo, onGetCatalogoById } = useCatalogo();
+  const { catalogos, onDeleteCatalogo, onGetCatalogoById, filters, } = useCatalogo( inputSearch );
   const user = useSelector((state) => state?.user.user);
   const error = useSelector((state) => state?.catalogo.error);
   const dispatch = useDispatch()
@@ -61,20 +63,25 @@ export const CatalogoPage = () => {
             add_circle
           </span>
         </div>
-        <Filter />
+        <Filter 
+          inputSearch={inputSearch}
+          setInputSearch={setInputSearch}
+        />
         <table className="catalogo_table">
           <thead>
             <tr>
               <th>Usuario</th>
               <th>Ciclo</th>
               <th>Tecnologia</th>
-              <th>Fecha</th>
+              <th
+                style={{ cursor: 'pointer' }}
+              >Fecha</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
             {catalogos &&
-              catalogos.map((catalogo) => {
+              filters.map((catalogo) => {
                 return (
                   <tr key={catalogo.id}>
                     <td>{catalogo.usuario.name || user}</td>
@@ -129,8 +136,8 @@ export const CatalogoPage = () => {
           {errorState && (
             <p style={{ marginLeft: '-13rem', color: '#FF0060', }}>{error}</p>
           )}
-          <p>{`< 7 de 20 >`}</p>
         </div>
+      <Paginador />
       </main>
       <MenuOpciones />
     </div>

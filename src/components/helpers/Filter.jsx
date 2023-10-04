@@ -1,26 +1,30 @@
-import '../../styles/components/helpers/filter.css'
+import '../../styles/components/helpers/filter.css';
 
-export const Filter = () => {
-    return (
-        <form className='filter_form'>
-            <label className='date'> 
-                Fecha de inicio:
-            </label>
-            <input type="date" />
+export const Filter = ({ setInputSearch, inputSearch }) => {
 
-            <label className='date'> 
-                Fecha de fin:
-            </label>
-            <input 
-                type="date" 
-            />
+  const handleInputChange = ({ target }) => {
+    setInputSearch(target.value);
+  };
 
-            <label className='buscar'>
-               Buscar: 
-            </label> 
-            <input 
-                type="text" 
-            />
-        </form>
-    )
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="filter_form">
+      <label className="date">Fecha de inicio:</label>
+      <input type="date" />
+
+      <label className="date">Fecha de fin:</label>
+      <input type="date" />
+
+      <label className="buscar">Buscar:</label>
+      <input
+        type="text"
+        value={inputSearch}
+        name="inputSearch"
+        onChange={handleInputChange}
+      />
+    </form>
+  );
+};
