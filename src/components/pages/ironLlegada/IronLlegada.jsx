@@ -8,6 +8,9 @@ import '../../../styles/components/ironLlegada.css';
 import { Paginador } from '../../helpers/Paginador';
 import { useIronLlegada} from '../../../hooks/useIronLlegada';
 import { updateGetIronLlegada } from '../../../actions/ironLlegadaActions';
+import { AddIronLlegadaModal } from '../../../ui/AddIronLlegadaModal';
+import { EditIronLlegadaModal } from '../../../ui/EditIronLlegadaModal';
+import { ShowIronLlegadaId } from '../../../ui/ShowIronLlegadaId';
 
 
 export const IronLlegada = () => {
@@ -23,30 +26,30 @@ export const IronLlegada = () => {
   const error = useSelector((state) => state?.ironLlegada.error);
   const dispatch = useDispatch()
 
-  // const handleAddModal = () => {
-  //   setAddModal(!addModal);
-  // };
+  const handleAddModal = () => {
+    setAddModal(!addModal);
+  };
 
-  // const handleEditModal = (id) => {
-  //   dispatch(updateGetIronLlegada(id));
-  //   setIronLlegadaId(id);
-  //   setEditModal(!editModal);
-  // };
+  const handleEditModal = (id) => {
+    dispatch(updateGetIronLlegada(id));
+    setIronLlegadaId(id);
+    setEditModal(!editModal);
+  };
 
-  // const handleInfoModal = (id) => {
-  //   if(!id) return setInfoModal(!infoModal);
-  //   onGetIronLlegadaById(id);
-  //   setInfoModal(!infoModal);
-  // };
+  const handleInfoModal = (id) => {
+    if(!id) return setInfoModal(!infoModal);
+    onGetIronLlegadaById(id);
+    setInfoModal(!infoModal);
+  };
 
-  // useEffect(() => {
-  //   if (error) {
-  //     setErrorState(true);
-  //     setTimeout(() => {
-  //       setErrorState(false);
-  //     }, 5000);
-  //   }
-  // }, [error]);
+  useEffect(() => {
+    if (error) {
+      setErrorState(true);
+      setTimeout(() => {
+        setErrorState(false);
+      }, 5000);
+    }
+  }, [error]);
 
   return (
     <div className="container">
@@ -61,13 +64,14 @@ export const IronLlegada = () => {
                 add_circle
               </span>
           </div>
-          {/* <Filter 
+          <Filter 
             inputSearch={inputSearch}
             setInputSearch={setInputSearch}
-          /> */}
+          />
           <table className="ironLlegada_table">
           <thead>
             <tr>
+              <th>Usuario</th>
               <th>Tipo Transporte</th>
               <th>Destino</th>
               <th>Ubicacion</th>
@@ -80,13 +84,16 @@ export const IronLlegada = () => {
             </tr>
           </thead>
           <tbody>
-          {/* {ironLlegada &&
+          {ironLlegada &&
               filters.map((ironLlegada) => {
                 return (
                   <tr key={ironLlegada.id}>
                     <td>{ironLlegada.usuario.name || user}</td>
-                    <td>{ironLlegada.ciclo || ''}</td>
-                    <td>{ironLlegada.tecnologia || ''}</td>
+                    <td>{ironLlegada.tipo_transporte || ''}</td>
+                    <td>{ironLlegada.destino || ''}</td>
+                    <td>{ironLlegada.ubicacion || ''}</td>
+                    <td>{ironLlegada.numero_remision || ''}</td>
+                    <td>{ironLlegada.codigo_medio || ''}</td>
                     <td>
                       {moment(ironLlegada.createdAt).format(
                         'DD/MM/YYYY hh:mm:ss a'
@@ -101,7 +108,7 @@ export const IronLlegada = () => {
                         edit
                       </span>
                       <span
-                        onClick={() => onDeleteCatalogo(ironLlegada.id)}
+                        onClick={() => onDeleteIronLlegada(ironLlegada.id)}
                         title="Eliminar"
                         className="material-symbols-outlined delete"
                       >
@@ -117,10 +124,26 @@ export const IronLlegada = () => {
                     </td>
                   </tr>
                 );
-              })} */}
+              })}
           </tbody>
-          
+          {addModal ? (
+            <AddIronLlegadaModal handleAddModal={handleAddModal} />
+          ) : null}
+          {editModal ? (
+            <EditIronLlegadaModal
+            ironLlegadaId={ironLlegadaId}
+              handleEditModal={handleEditModal}
+            />
+          ) : null}
+          {infoModal ? (
+            <ShowIronLlegadaId handleInfoModal={handleInfoModal} />
+          ) : null}
         </table>
+        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+          {errorState && (
+            <p style={{ marginLeft: '-13rem', color: '#FF0060', }}>{error}</p>
+          )}
+        </div>        
         <Paginador />
       </main>
       <MenuOpciones />

@@ -27,8 +27,6 @@ export const useIronLlegada = (filterSearch ) => {
           return (
             ironLlegada.usuario.name.toLowerCase().includes(filterSearch.toLowerCase()) ||
               ironLlegada.tipo_transporte.toLowerCase().includes(filterSearch.toLowerCase()) ||
-              ironLlegada.destino.toLowerCase().includes(filterSearch.toLowerCase()) ||
-              ironLlegada.ubicacion.toLowerCase().includes(filterSearch.toLowerCase()) ||
               ironLlegada.numero_remision.toLowerCase().includes(filterSearch.toLowerCase()) ||
               ironLlegada.codigo_medio.toLowerCase().includes(filterSearch.toLowerCase())
           );
