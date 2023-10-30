@@ -4,8 +4,8 @@ import { Filter } from '../../helpers/Filter';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment/moment';
-import '../../../styles/components/ironLlegada.css';
 import { Paginador } from '../../helpers/Paginador';
+import '../../../styles/components/ironLlegada.css';
 import { useIronLlegada} from '../../../hooks/useIronLlegada';
 import { updateGetIronLlegada } from '../../../actions/ironLlegadaActions';
 import { AddIronLlegadaModal } from '../../../ui/AddIronLlegadaModal';
@@ -21,9 +21,9 @@ export const IronLlegada = () => {
   const [editModal, setEditModal] = useState(false);
   const [infoModal, setInfoModal] = useState(false);
 
-  const { ironLlegada, onDeleteIronLlegada, onGetIronLlegadaById, filters, } = useIronLlegada( inputSearch );
+  const { ironLlegadas, onDeleteIronLlegada, onGetIronLlegadaById, filters } = useIronLlegada( inputSearch );
   const user = useSelector((state) => state?.user.user);
-  const error = useSelector((state) => state?.ironLlegada.error);
+  // const error = useSelector((state) => state?.ironLlegada.error);
   const dispatch = useDispatch()
 
   const handleAddModal = () => {
@@ -42,14 +42,14 @@ export const IronLlegada = () => {
     setInfoModal(!infoModal);
   };
 
-  useEffect(() => {
-    if (error) {
-      setErrorState(true);
-      setTimeout(() => {
-        setErrorState(false);
-      }, 5000);
-    }
-  }, [error]);
+  // useEffect(() => {
+  //   if (error) {
+  //     setErrorState(true);
+  //     setTimeout(() => {
+  //       setErrorState(false);
+  //     }, 5000);
+  //   }
+  // }, [error]);
 
   return (
     <div className="container">
@@ -58,7 +58,7 @@ export const IronLlegada = () => {
         <div className="ironLlegada_add">
             <h1>Iron Llegada</h1>
             <span
-                
+              onClick={handleAddModal}  
                 className="material-symbols-outlined add"
               >
                 add_circle
@@ -84,7 +84,7 @@ export const IronLlegada = () => {
             </tr>
           </thead>
           <tbody>
-          {ironLlegada &&
+          {ironLlegadas &&
               filters.map((ironLlegada) => {
                 return (
                   <tr key={ironLlegada.id}>
@@ -139,12 +139,12 @@ export const IronLlegada = () => {
             <ShowIronLlegadaId handleInfoModal={handleInfoModal} />
           ) : null}
         </table>
-        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+        {/* <div style={{ display: 'flex', justifyContent: 'space-around' }}>
           {errorState && (
             <p style={{ marginLeft: '-13rem', color: '#FF0060', }}>{error}</p>
           )}
-        </div>        
-        <Paginador />
+        </div>         */}
+        {/* <Paginador /> */}
       </main>
       <MenuOpciones />
     </div>

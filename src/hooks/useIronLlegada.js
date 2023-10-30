@@ -17,21 +17,33 @@ export const useIronLlegada = (filterSearch ) => {
     dispatch(getIronLlegada(token));
   }, []);
 
-  const filteredIronLlegadaByDate =  [...ironLlegadas].sort(
-    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-  );
+  // const filteredIronLlegadaByDate =  [...ironLlegadas].sort(
+  //   (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  // );
 
-  const filters =
-    typeof filterSearch === 'string' && filterSearch.length > 0
-      ? [...ironLlegadas].filter((ironLlegada) => {
-          return (
-            ironLlegada.usuario.name.toLowerCase().includes(filterSearch.toLowerCase()) ||
-              ironLlegada.tipo_transporte.toLowerCase().includes(filterSearch.toLowerCase()) ||
-              ironLlegada.numero_remision.toLowerCase().includes(filterSearch.toLowerCase()) ||
-              ironLlegada.codigo_medio.toLowerCase().includes(filterSearch.toLowerCase())
-          );
-        })
-      : filteredIronLlegadaByDate;
+  // const filters =
+  //   typeof filterSearch === 'string' && filterSearch.length > 0
+  //     ? [...ironLlegadas].filter((ironLlegada) => {
+  //         return (
+  //           ironLlegada.usuario.name.toLowerCase().includes(filterSearch.toLowerCase()) ||
+  //             ironLlegada.tipo_transporte.toLowerCase().includes(filterSearch.toLowerCase()) ||
+  //             ironLlegada.numero_remision.toLowerCase().includes(filterSearch.toLowerCase()) ||
+  //             ironLlegada.codigo_medio.toLowerCase().includes(filterSearch.toLowerCase())
+  //         );
+  //       })
+  //     : filteredIronLlegadaByDate;
+  
+      const filters =
+      typeof filterSearch === 'string' && filterSearch.length > 0
+        ? [...ironLlegadas].filter((ironLlegada) => {
+            return (
+              ironLlegada.usuario.name.toLowerCase().includes(filterSearch.toLowerCase()) ||
+                ironLlegada.tipo_transporte.toLowerCase().includes(filterSearch.toLowerCase()) ||
+                ironLlegada.numero_remision.toLowerCase().includes(filterSearch.toLowerCase()) ||
+                ironLlegada.codigo_medio.toLowerCase().includes(filterSearch.toLowerCase())
+            );
+          })
+        : ironLlegadas;    
 
   const onGetIronLlegadaById = (id) => {
     dispatch(getIronLlegadaById(token, id));
@@ -49,7 +61,7 @@ export const useIronLlegada = (filterSearch ) => {
   return {
     ironLlegadas,
     filters,
-    filteredIronLlegadaByDate,
+    // filteredIronLlegadaByDate,
     onGetIronLlegadaById,
     onPostIronLlegada,
     onPutIronLlegada,
