@@ -23,7 +23,7 @@ export const IronLlegada = () => {
 
   const { ironLlegadas, onDeleteIronLlegada, onGetIronLlegadaById, filters } = useIronLlegada( inputSearch );
   const user = useSelector((state) => state?.user.user);
-  // const error = useSelector((state) => state?.ironLlegada.error);
+  const error = useSelector((state) => state?.ironLlegada.error);
   const dispatch = useDispatch()
 
   const handleAddModal = () => {
@@ -42,14 +42,14 @@ export const IronLlegada = () => {
     setInfoModal(!infoModal);
   };
 
-  // useEffect(() => {
-  //   if (error) {
-  //     setErrorState(true);
-  //     setTimeout(() => {
-  //       setErrorState(false);
-  //     }, 5000);
-  //   }
-  // }, [error]);
+  useEffect(() => {
+    if (error) {
+      setErrorState(true);
+      setTimeout(() => {
+        setErrorState(false);
+      }, 5000);
+    }
+  }, [error]);
 
   return (
     <div className="container">
@@ -139,12 +139,12 @@ export const IronLlegada = () => {
             <ShowIronLlegadaId handleInfoModal={handleInfoModal} />
           ) : null}
         </table>
-        {/* <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
           {errorState && (
             <p style={{ marginLeft: '-13rem', color: '#FF0060', }}>{error}</p>
           )}
-        </div>         */}
-        {/* <Paginador /> */}
+        </div>        
+        <Paginador />
       </main>
       <MenuOpciones />
     </div>

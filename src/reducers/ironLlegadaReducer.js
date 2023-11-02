@@ -15,8 +15,8 @@ import {
     UPDATE_IRONLLEGADA_PENDING,
     UPDATE_IRONLLEGADA_REJECTED,
     UPDATE_IRONLLEGADA_SUCCESS,
-} from "./typesIronLlegada"
-  
+} from "../actions/types"
+
   const initialState = {
     ironLlegadas: [],
     loading: false,

@@ -1,11 +1,4 @@
 import { 
-    deleteIronLlegadaApi, 
-    getIronLlegadaByIdApi, 
-    getIronLlegadaApi, 
-    postIronLlegadaApi,
-    updateIronLlegadaApi 
-} from "../services/ironLlegadaService"
-import { 
     GET_IRONLLEGADA_PENDING, 
     GET_IRONLLEGADA_REJECTED, 
     GET_IRONLLEGADA_SUCCESS, 
@@ -22,7 +15,15 @@ import {
     UPDATE_IRONLLEGADA_PENDING,
     UPDATE_IRONLLEGADA_REJECTED,
     UPDATE_IRONLLEGADA_SUCCESS,
-} from "./typesIronLlegada"
+} from "../actions/types"
+
+import { 
+    deleteIronLlegadaApi, 
+    getIronLlegadaByIdApi, 
+    getIronLlegadaApi, 
+    postIronLlegadaApi,
+    updateIronLlegadaApi 
+} from "../services/ironLlegadaService"
 
 //Obtener todas las remesas iron llegada
 export const getIronLlegada = (token) => {
@@ -30,6 +31,7 @@ export const getIronLlegada = (token) => {
         dispatch(getIronLlegadaPending())
         try {
             const data = await getIronLlegadaApi(token)
+            console.log(data)
             dispatch(getIronLlegadaSuccess(data))
         } catch (error) {
            dispatch(getIronLlegadaError(error)) 
