@@ -43,7 +43,7 @@ export const AddIronLlegadaModal = ({ handleAddModal }) => {
       return;
     }
     if (
-      inputsIronLlegada.codigo_medio.length == 8
+      inputsIronLlegada.codigo_medio.length !== 8
     ) {
       setMsgError('El codigo del medio debe de ser de 8 caracteres');
       setTimeout(() => {
@@ -103,14 +103,14 @@ export const AddIronLlegadaModal = ({ handleAddModal }) => {
           value={inputsIronLlegada.destino}
           name="destino"
         />         
-        <input
-            onChange={hanldeOnChange}
-            type="text"
-            placeholder="Ubicacion"
-            value="Calle 59"
-            readOnly
-            name="ubicacion"
-        />
+        <select
+          value={inputsIronLlegada.ubicacion}
+          onChange={hanldeOnChange}
+          name="ubicacion"
+        >
+          <option value="">Ubicación</option>
+          <option value="Calle 59">Calle 59</option>
+        </select>
         
         <button type="submit">Añadir Remesa</button>
       </form>
