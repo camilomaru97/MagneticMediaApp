@@ -1,0 +1,44 @@
+{
+	"preguntas": [
+		    {
+                "id": "1",
+                "question": "1. Pregunta Uno",
+                "info": "¿Quién escribió la famosa obra de teatro Romeo y Julieta?",
+                "options": ["William Shakespeare", "Miguel de Cervantes", "Charles Dickens", "Jane Austen"],
+                "img": "https://img.freepik.com/vector-premium/persona-pregunta-icono-trabajo-personas-ilustracion-concepto_159757-135.jpg?w=900",
+                "answer": "William Shakespeare"
+			},
+			{
+                "id": "2",
+				"question": "2. Pregunta Dos",
+				"info": "¿Cuál es el planeta más grande del sistema solar?",
+				"options": ["Marte", "Venus", "Jupiter", "Saturno"],
+                "img": "https://img.freepik.com/vector-premium/persona-pregunta-icono-trabajo-personas-ilustracion-concepto_159757-135.jpg?w=900",
+                "answer": "Jupiter"
+			},
+			{
+                "id": "3",
+				"question": "3. Pregunta Tres",
+				"info": "¿Quién escribió la famosa novela Cien años de soledad, que se publicó por primera vez en 1967?",
+				"options": ["Mario Vargas Llosa", "Gabriel García Márquez", "Isabel Allende", "Jorge Luis Borges"],
+                "img": "https://img.freepik.com/vector-premium/persona-pregunta-icono-trabajo-personas-ilustracion-concepto_159757-135.jpg?w=900",
+                "answer": "Gabriel García Márquez"
+			},
+			{
+                "id": "4",
+				"question": "4. Pregunta Cuatro",
+				"info": "¿Cuál es el proceso de transformación de un gusano en una mariposa llamado?",
+				"options": ["Metamorfosis", "Evolución", "Transmutación", "Mutación"],
+                "img": "https://img.freepik.com/vector-premium/persona-pregunta-icono-trabajo-personas-ilustracion-concepto_159757-135.jpg?w=900",
+                "answer": "Metamorfosis"
+			},
+			{
+                "id": "5",
+				"question": "5. Pregunta Cinco",
+				"info": "¿Cuál de los siguientes equipos ha ganado más Copas del Mundo de la FIFA?",
+				"options": ["Alemania", "Argentina", "Italia", "Brasil"],
+                "img": "https://img.freepik.com/vector-premium/persona-pregunta-icono-trabajo-personas-ilustracion-concepto_159757-135.jpg?w=900",
+                "answer": "Brasil"
+			}
+	    ]
+	}
