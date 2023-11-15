@@ -21,7 +21,7 @@ export const EditIronLlegadaModal = ({ handleEditModal, ironLlegadaId }) => {
   );
 
   useEffect( () => {
-    const validUserIronLlegada = ironLlegadaToUpdate?.usuario?._id === user.id;
+    const validUserIronLlegada = ironLlegadasToUpdate?.usuario?._id === user.id;
     !validUserIronLlegada
     ? setMsgError('No tienes permisos para editar esta remesa')
     : setMsgError(null);
@@ -69,7 +69,7 @@ export const EditIronLlegadaModal = ({ handleEditModal, ironLlegadaId }) => {
       return;
     }
     if (
-      inputsIronLlegada.codigo_medio.length == 8
+      inputsIronLlegada.codigo_medio.length !== 8
     ) {
       setMsgError('El codigo del medio debe de ser de 8 caracteres');
       setTimeout(() => {
@@ -128,16 +128,15 @@ export const EditIronLlegadaModal = ({ handleEditModal, ironLlegadaId }) => {
           placeholder="Destino"
           value={inputsIronLlegada.destino}
           name="destino"
-        /> 
-        <input
-            onChange={hanldeOnChange}
-            type="text"
-            placeholder="Ubicacion"
-            value="Calle 59"
-            readOnly
-            name="ubicacion"
-        />
-
+        />         
+        <select
+          value={inputsIronLlegada.ubicacion}
+          onChange={hanldeOnChange}
+          name="ubicacion"
+        >
+          <option value="">Ubicación</option>
+          <option value="Calle 59">Calle 59</option>
+        </select>
         <button disabled={msgError} type="submit">Editar Remesa</button>
       </form>
       {msgError && (
