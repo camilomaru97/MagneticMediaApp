@@ -2,20 +2,76 @@ import { Sidebar } from "../../../ui/Sidebar"
 import '../../../styles/components/noticiaspage.css'
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
+import { useDispatch, useSelector } from 'react-redux';
 import { MenuOpciones } from "../../../ui/MenuOpciones"
 import { useTranslation } from "react-i18next"
 import { useIronSalida } from "../../../hooks/useIronSalida"
 import { useCatalogo } from "../../../hooks/useCatalogo"
 import { useIronLlegada } from "../../../hooks/useIronLlegada"
+import { jsPDF } from "jspdf";
+import autoTable from 'jspdf-autotable'
+import moment from 'moment/moment';
 
 export const NoticiasPage = () => {
 
 	const [activeBar, setActiveBar] = useState(null)
 	const [t, i18n] = useTranslation('global')
+  const catalogos = useSelector( state => state?.catalogo?.catalogos)
+  const ironLlegadas = useSelector( state => state?.ironLlegada?.ironLlegadas)
+  const ironSalida = useSelector( state => state?.ironSalida?.ironSalida)
 
   useIronSalida()
   useCatalogo()
   useIronLlegada()
+
+  const generarPDF = () => {
+    const doc = new jsPDF()
+    doc.text('Reporte General Magnetic Media', 10, 10)
+    const imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Banco_Caja_Social_logo.svg/2560px-Banco_Caja_Social_logo.svg.png"
+    doc.addImage(imageUrl, 'JPEG', 150, 5, 40, 12); 
+
+    const columnsCatalogo = ['Nombre Usuario', 'IP Catalogo', 'Fecha', 'Ciclo', 'Tecnologia']
+    const copyCatalogos = [...catalogos].slice(0,7)
+    const catalogosTable = copyCatalogos.map( catalogo => {
+      return [catalogo?.usuario?.name, catalogo.numero_ip, moment(catalogo?.createdAt).format('DD/MM/YYYY hh:mm:ss a'), catalogo?.ciclo, catalogo?.tecnologia]
+    })
+
+    const columnsironSalida = ['Nombre Usuario', 'Fecha', 'Ubicaion', 'Codigo Medio', 'Destino']
+    const copyIronSalida = [...ironSalida].slice(0,7)
+    const ironSalidaTable = copyIronSalida.map( iron => {
+      return [iron?.usuario?.name, moment(iron?.createdAt).format('DD/MM/YYYY hh:mm:ss a'), iron?.ubicacion, iron?.codigo_medio, iron?.destino]
+    })
+
+    const columnsironLlegada = ['Nombre Usuario', 'Ubicacion', 'Destino', 'Codigo Medio', 'Tipo Transporte']
+    const copyIronLlegada = [...ironLlegadas].slice(0,7)
+    const ironLlegadaTable = copyIronLlegada.map( iron => {
+      return [iron?.usuario?.name, iron?.ubicacion, iron?.destino, iron?.codigo_medio, iron?.tipo_transporte]
+    })
+    
+    doc.setFontSize(12);
+    doc.text(`Ultimas 7 Cintas en Catalogo, Total de: ${catalogos.length} cintas registradas`, 13, 21)
+    autoTable(doc, {
+      startY: 25,
+      head: [columnsCatalogo],
+      body: catalogosTable,
+    });
+
+
+    doc.text(`Ultimas 7 Cintas en Iron Salida, Total de: ${ironSalida.length} cintas registradas `, 13, 98)
+    autoTable(doc, {
+      startY: doc.lastAutoTable.finalY + 15,
+      head: [columnsironSalida],
+      body: ironSalidaTable,
+    });
+
+    doc.text(`Ultimas 7 Cintas en Iron Llegada, Total de: ${ironLlegadas.length} cintas registradas`, 13, 172)
+    autoTable(doc, {
+      startY: doc.lastAutoTable.finalY + 15,
+      head: [columnsironLlegada],
+      body: ironLlegadaTable,
+    });
+    doc.save('ReporteCintoteca.pdf')
+  }
 
 
 		const handleMenuBar = () => {
@@ -36,16 +92,23 @@ export const NoticiasPage = () => {
             <span class="material-symbols-outlined">
               g_translate
             </span>
-            <button onClick={() => i18n.changeLanguage('es')} style={{ background: 'none', cursor: 'pointer', marginRight: '.5rem', marginLeft: '.5rem', marginTop: '2px'}}>
+            <button onClick={() => i18n.changeLanguage('es')} style={{ background: 'none', cursor: 'pointer', marginRight: '.5rem', marginLeft: '.5rem', marginTop: '2px', color: '#6C9BCF'}}>
               EN
             </button>
-            <button onClick={() => i18n.changeLanguage('en')} style={{ background: 'none', cursor: 'pointer', marginTop: '2px'}}>
+            <button onClick={() => i18n.changeLanguage('en')} style={{ background: 'none', cursor: 'pointer', marginTop: '2px', color: '#1B9C85'}}>
               ES
+            </button>
+          </div>
+          <div className="download_report">
+            <button onClick={generarPDF} title="Descargar Reporte">
+              <span class="material-symbols-outlined">
+                cloud_download
+              </span>
             </button>
           </div>
         </div>
 		
-				<div className="noticias">
+				<div style={{ marginTop: '1rem'}} className="noticias">
 
 					<div className="guardado_noticias">
 						<div className="status_noticias">

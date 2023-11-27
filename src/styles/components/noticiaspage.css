@@ -278,9 +278,28 @@ main .catalogos_recientes a{
 
 .container_news_translate{
     display: flex;
-    margin-top: 1.8rem;
+    margin-top: 2rem;
     justify-content: space-between;
     
+}
+
+.download_report{
+    flex: 80%;
+    margin-top: 1.5rem;
+    text-align: right;
+}
+
+.download_report button{
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.2rem .5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-right: .5rem;
+    margin-top: .5rem;
 }
 
 
