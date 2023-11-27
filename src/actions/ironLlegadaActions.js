@@ -33,6 +33,7 @@ export const getIronLlegada = (token) => {
             const data = await getIronLlegadaApi(token)
             console.log(data)
             dispatch(getIronLlegadaSuccess(data))
+            console.log(data)
         } catch (error) {
            dispatch(getIronLlegadaError(error)) 
         }
@@ -44,7 +45,7 @@ export const getIronLlegadaSuccess = ( payload ) => ({ type: GET_IRONLLEGADA_SUC
 
 //Obtener remesas iron llegada por id
 export const getIronLlegadaById = (token, id) => {
-    return async (dispatch) => {
+    return async (dispatch) => {       
         dispatch(getIronLlegadaByIdPending())
         try {
             await getIronLlegadaByIdApi(token, id)
@@ -77,14 +78,14 @@ export const postIronLlegadaSuccess = ( payload ) => ({ type: CREATE_IRONLLEGADA
 
 
 // Actualizar remesas iron llegada
-export const putIronLlegada = (token, ironllegada, id) => {
+export const putIronLlegada = (token, ironLlegada, id) => {
     console.log(id)
     return async (dispatch) => {
         dispatch(updateIronLlegadaPending())
         try {
-            const data = await updateIronLlegadaApi(token, ironllegada, id)
+            const data = await updateIronLlegadaApi(token, ironLlegada, id)
             console.log(data)
-            dispatch(updateIronLlegadaSuccess(data.ironllegada))
+            dispatch(updateIronLlegadaSuccess(data.ironLlegada))
         } catch (error) {
             dispatch(updateIronLlegadaError(error))
         }
