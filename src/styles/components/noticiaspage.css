@@ -269,6 +269,20 @@ main .catalogos_recientes a{
     }
 }
 
+.container_news{
+    height: 50px;
+    display: flex;
+    width: 100%;
+    gap: 1.8rem;
+}
+
+.container_news_translate{
+    display: flex;
+    margin-top: 1.8rem;
+    justify-content: space-between;
+    
+}
+
 
 
 @media screen and (max-width: 767px) {

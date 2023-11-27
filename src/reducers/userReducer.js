@@ -21,6 +21,9 @@ const initialState = {
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_USER_SUCCESS:
+      return{
+        ...state
+      }
     case POST_USER_SUCCESS:
       return {
         ...state,

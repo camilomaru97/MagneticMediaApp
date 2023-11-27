@@ -43,7 +43,6 @@ export const postNewUser = (payload) => {
     dispatch(postNewUserPending(true));
     try {
       const res = await clientAxios.post('auth/new', payload);
-      console.log(res.data);
       dispatch(postNewUserSuccess(res.data));
     } catch ({ response }) {
       dispatch(postNewUserError(response.data.msg));
