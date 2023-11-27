@@ -1,0 +1,65 @@
+main .catalogo_table{
+    background-color: var(--color-white);
+    width: 100%;
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+    position: relative;
+}
+
+main .catalogo_table:hover{
+    box-shadow: none;
+}
+
+main .catalogo_table tbody td{
+    height: 3.5rem;
+    border-bottom: 1px solid var(--color-light);
+    border-top: 1px solid var(--color-light);
+    margin-bottom: 10px;
+    color: var(--color-dark-variant);
+}
+
+main .catalogo_table tbody tr:last-child td{
+    border: none;
+}
+
+main .catalog_add{
+    display: flex;
+}
+
+main .catalog_add .add{
+    cursor: pointer;
+    margin-top: 1.7rem;
+    margin-left: 1rem;
+    font-size: 2.2rem;
+    color: var(--color-danger);
+}
+
+.catalogo_table tbody .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    cursor: pointer;
+    font-weight: normal;
+    padding: 0 0.5rem;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+}
+
+main p{
+    cursor: pointer;
+    width: 100%;
+    font-size: .9rem;
+    text-align: end;
+    margin-top: 1rem;
+    padding: 0 1.5rem;
+}
+

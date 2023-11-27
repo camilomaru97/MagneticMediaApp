@@ -12,6 +12,7 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
+    'eslint-disable-next-line react/prop-types',
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },

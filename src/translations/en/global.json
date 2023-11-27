@@ -1,0 +1,27 @@
+{
+    "sidebar": {
+        "Noticias": "Noticias",
+        "Catalogo": "Catalogo",
+        "Llegada": "Llegada",
+        "Salida": "Salida",
+        "Usuarios": "Usuarios",
+        "Analiticas": "Analiticas",
+        "Ventas": "Ventas"
+    },
+
+    "noticias": {
+        "noticias": "Noticias",
+        "total_catalogos": "Total Catalogos",
+        "total_ironSalida": "Total Iron Salida",
+        "total_ironLlegada": "Total Iron Llegada",
+        "empleados_del_mes": "Empleados del Mes",
+        "nombre": "Nombre",
+        "fecha": "Fecha",
+        "estado": "Estado",
+        "ubicacion": "Ubicacion",
+        "ver_todo": "Ver todos",
+        "recordatorios": "Recordatorios"
+    }
+}
+
+

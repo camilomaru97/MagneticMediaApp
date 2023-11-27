@@ -1,0 +1,112 @@
+
+.edit_modal{
+    background-color: var(--color-white);
+    width: 70%;
+    height: 325px;
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    transition: all 0.3s ease;
+    position: absolute;
+    top: -18%;
+    left: 22%;
+    margin-top: 4.5rem;
+    
+}
+
+.add_modal h1{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.edit_modal .close{
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+    justify-content: end;
+    color: var(--color-danger);
+    position: absolute;
+    top: 3rem;
+    right: 2rem;
+
+}
+
+.edit_modal_form{
+    display: flex;
+    padding-left: 2rem;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.edit_modal_form input {
+    width: 40%;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    outline: none;
+    color: var(--color-info-dark);
+    margin-right: 2rem;
+}
+
+.edit_modal_form input::placeholder {
+    color: var(--color-info-dark);
+}
+
+.edit_modal_form select {
+    width: 40%;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-bottom: 1px solid rgb(220, 217, 217);
+    color: var(--color-info-dark);
+    margin-right: 2rem;
+}
+
+.edit_modal_form button {
+    width: 43%;
+    height: 28px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: white;
+}
+.edit_modal_form button:hover {
+    background-color: #558ecf;
+    color: white;
+}
+
+.edit_modal_form button:disabled {
+    background-color: #558ecf;
+    color: white;
+    cursor: not-allowed;
+}
+.edit_modal_form input:disabled {
+    background-color: transparent;
+    color: var(--color-info-dark);
+    cursor: not-allowed;
+}
+.edit_modal_form select:disabled {
+    background-color: transparent;
+    color: var(--color-info-dark);
+    cursor: not-allowed;
+}
+
+
+
+
+
+.edit_modal .error{
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+.edit_modal .error p{
+    text-align: center;
+    color: var(--color-danger);
+}

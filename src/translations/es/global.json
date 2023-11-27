@@ -1,0 +1,25 @@
+{
+    "sidebar": {
+        "Noticias": "News",
+        "Catalogo": "Catalog",
+        "Llegada": "Arrival",
+        "Salida": "Exit",
+        "Usuarios": "Users",
+        "Analiticas": "Analytics",
+        "Ventas": "Sales"
+    },
+
+    "noticias": {
+        "noticias": "News",
+        "total_catalogos": "Total Catalogs",
+        "total_ironSalida": "Total Iron Exit",
+        "total_ironLlegada": "Total Iron Arrival",
+        "empleados_del_mes": "Employees of the month",
+        "nombre": "Name",
+        "fecha": "Date",
+        "estado": "State",
+        "ubicacion": "Location",
+        "ver_todo": "See all",
+        "recordatorios": "Reminders"
+    }
+}

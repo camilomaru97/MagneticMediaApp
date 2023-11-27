@@ -1,0 +1,47 @@
+
+.info_modal{
+    background-color: var(--color-white);
+    width: 55%;
+    height: 400px;
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    transition: all 0.3s ease;
+    position: absolute;
+    top: -18%;
+    left: 22%;
+    margin-top: 4.5rem;
+}
+
+.info_modal .close{
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+    justify-content: end;
+    color: var(--color-danger);
+    position: absolute;
+    top: 3.1rem;
+    right: 2rem;
+}
+
+.info_modal h1{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.info_modal .info_modal_box p{
+    display: flex;
+    padding-left: 2rem;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.info_modal .info_modal_box span{
+    font-weight: 400;
+}

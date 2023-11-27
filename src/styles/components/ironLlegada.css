@@ -1,0 +1,23 @@
+main .ironLlegada_add{
+    display: flex;
+}
+
+main .ironLlegada_add .add{
+    cursor: pointer;
+    margin-top: 1.7rem;
+    margin-left: 1rem;
+    font-size: 2.2rem;
+    color: var(--color-danger);
+}
+
+main .ironLlegada_table{
+    background-color: var(--color-white);
+    width: 100%;
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+    position: relative;
+}
