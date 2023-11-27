@@ -1,10 +1,17 @@
 
 import { useSelector } from 'react-redux'
 import '../styles/ui/menuopciones.css'
+import { useTranslation } from 'react-i18next'
 
 export const MenuOpciones = ({ handleMenuBar }) => {
 
+  const [t, i18n] = useTranslation('global')
   const name = useSelector(state => state.user.user)
+
+  let nameFormat;
+  if(name.split(' ').length > 1) {
+    nameFormat = `${name.split(' ')[0]} ${name.split(' ')[2]}`
+  }
 
   return (
     <div className="menu_opciones">
@@ -29,7 +36,7 @@ export const MenuOpciones = ({ handleMenuBar }) => {
 
         <div className="perfil_usuario">
           <div className="info">
-            <p><b>{ name }</b></p>
+            <p><b>{ name.split(' ').length > 2 ? nameFormat : name}</b></p>
               <small className="text-muted">Admin</small>
           </div>
           <div className="foto_perfil">
@@ -42,13 +49,13 @@ export const MenuOpciones = ({ handleMenuBar }) => {
         <div className="logo">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Banco_Caja_Social_logo.svg/2560px-Banco_Caja_Social_logo.svg.png" alt="logo" />
           <h2>Banco Caja Social</h2>
-          <p>Administrado Cintoteca Bogota</p>
+          <p>Cintoteca Bogota</p>
         </div>
       </div>
 
       <div className="recordatorios">
         <div className="header">
-          <h2>Recordatorios</h2>
+          <h2>{t('noticias.recordatorios')}</h2>
           <span className="material-symbols-outlined">
             notifications_none
           </span>

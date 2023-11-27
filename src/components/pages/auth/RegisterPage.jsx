@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import validator from 'validator';
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import { gapi } from 'gapi-script';
+import GoogleLogin from 'react-google-login';
 
 export const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -30,6 +33,37 @@ export const RegisterPage = () => {
       }, 5000);
     }
   }, [errorAuth]);
+
+  const ClientID =  '961772786532-vkmgft3m6917rs2kkonfb0tcjq7a153e.apps.googleusercontent.com'
+  useEffect(() => {
+    const start = () => {
+        gapi.auth2.init({
+          client_id: ClientID
+        })
+    }
+    gapi.load('client:auth2', start)
+  },[])
+
+  const onSuccessLogin = (response) => {
+    console.log(response)
+    const newUser =  {
+      name: response.profileObj.name,
+      email: response.profileObj.email,
+      password: `${response.profileObj.googleId}`,
+    } 
+    console.log(newUser)
+    dispatch(postNewUser(newUser));
+    Swal.fire({
+      icon: 'success',
+      title: 'Acabamos de enviarte un correo de confirmacion, revisalo!',
+      showConfirmButton: false,
+      timer: 6000,
+    });
+  }
+
+  const onFailureLogin = (response) => {
+    console.log('something went wrong')
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -61,6 +95,12 @@ export const RegisterPage = () => {
     setUser('');
     setEmail('');
     setPassword('');
+    Swal.fire({
+      icon: 'success',
+      title: 'Acabamos de enviarte un correo de confirmacion, revisalo!',
+      showConfirmButton: false,
+      timer: 6000,
+    });
   };
 
   return (
@@ -109,7 +149,14 @@ export const RegisterPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit">Ingresar</button>
+          <button style={{ marginBottom: '1rem'}} type="submit">Crear Nueva Cuenta</button>
+          <GoogleLogin 
+            className='googleLogin'
+            clientId={ClientID}
+            onSuccess={onSuccessLogin}
+            onFailure={onFailureLogin}
+            cookiePolicy={'single_host_origin'}
+          />
         </form>
         <Link to="/auth">
           <p

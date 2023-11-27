@@ -10,6 +10,8 @@ import { useSelector } from 'react-redux';
 export const RouterApp = () => {
 
   const status = useSelector((state) => state.user.status);
+  const c = useSelector((state) => state.user)
+  console.log(c)
 
   return (
     <Routes>
