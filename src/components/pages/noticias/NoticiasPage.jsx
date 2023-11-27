@@ -1,14 +1,22 @@
 import { Sidebar } from "../../../ui/Sidebar"
 import '../../../styles/components/noticiaspage.css'
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { MenuOpciones } from "../../../ui/MenuOpciones"
 import { useTranslation } from "react-i18next"
+import { useIronSalida } from "../../../hooks/useIronSalida"
+import { useCatalogo } from "../../../hooks/useCatalogo"
+import { useIronLlegada } from "../../../hooks/useIronLlegada"
 
 export const NoticiasPage = () => {
 
 	const [activeBar, setActiveBar] = useState(null)
 	const [t, i18n] = useTranslation('global')
+
+  useIronSalida()
+  useCatalogo()
+  useIronLlegada()
+
 
 		const handleMenuBar = () => {
 			setActiveBar(!activeBar)
