@@ -7,9 +7,12 @@ import { FormSalida } from "../../../ui/modalsIronSalida/FormSalida";
 import { useState } from "react";
 import { deleteIronSalida } from "../../../actions/ironSalidaActions";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
+import { DELETE_SALIDA_REJECTED } from "../../../actions/types";
 
 export const IronSalida = () => {
-  const { ironSalida } = useSelector((state) => state?.ironSalida);
+  const token = useSelector((state) => state?.user?.token);
+  const { ironSalida, error } = useSelector((state) => state?.ironSalida);
   const dispatch = useDispatch();
 
   const [isModalAddOpen, setIsModalAddOpen] = useState(false);
@@ -36,15 +39,33 @@ export const IronSalida = () => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(deleteIronSalida(itemId));
-        Swal.fire("Eliminado!", "El registro ha sido eliminado.", "success");
+        dispatch(deleteIronSalida(token, itemId));
+          // if (error != " ") {
+          //   Swal.fire(
+          //     "Eliminado!",
+          //     "El registro ha sido eliminado.",
+          //     "success"
+          //   );
+          // }
       }
     });
   };
 
+  useEffect(() => {
+    const deleteIronSalidaError = (payload) => ({
+      type: DELETE_SALIDA_REJECTED,
+      payload,
+    });
+
+    setTimeout(() => {
+      dispatch(deleteIronSalidaError(""));
+    }, 2000);
+  }, [error]);
+
   return (
     <div className="container">
       <Sidebar />
+
       <main>
         <div className="ironLlegada_add">
           <h1>Iron Salida</h1>
@@ -55,6 +76,7 @@ export const IronSalida = () => {
             add_circle
           </span>
         </div>
+        <div style={{ color: "red" }}>{error && <>{error}</>}</div>
         <table className="ironLlegada_table">
           <thead>
             <tr>

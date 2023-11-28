@@ -73,18 +73,16 @@ export const postIronSalida = (token, ironSalida) => {
     try {
       const data = await postIronSalidaApi(token, ironSalida);
       dispatch(postIronSalidaSuccess(data));
-      
     } catch (error) {
-      let errorMessage = 'An unknown error occurred';
+      let errorMessage = "An unknown error occurred";
       if (error.response && error.response.data && error.response.data.msg) {
         errorMessage = error.response.data.msg;
       }
-      console.log("dsdf" , errorMessage);
+      console.log("dsdf", errorMessage);
       dispatch(postIronSalidaError(errorMessage));
     }
   };
 };
-
 
 export const postIronSalidaPending = () => ({ type: CREATE_SALIDA_PENDING });
 export const postIronSalidaError = (payload) => ({
@@ -104,12 +102,11 @@ export const updateIronSalida = (token, ironSalida, id) => {
       const data = await updateIronSalidaApi(token, ironSalida, id);
       dispatch(updateIronSalidaSuccess(data));
     } catch (error) {
-      
-      let errorMessage = 'An unknown error occurred to UPDATE';
+      let errorMessage = "An unknown error occurred to UPDATE";
       if (error.response && error.response.data && error.response.data.msg) {
         errorMessage = error.response.data.msg;
       }
-      
+
       dispatch(updateIronSalidaError(errorMessage));
     }
   };
@@ -132,7 +129,12 @@ export const deleteIronSalida = (token, id) => {
       await deleteIronSalidaApi(token, id);
       dispatch(deleteIronSalidaSuccess(id));
     } catch (error) {
-      dispatch(deleteIronSalidaError(error));
+      let errorMessage = "An unknown error occurred to UPDATE";
+      if (error.response && error.response.data && error.response.data.msg) {
+        errorMessage = error.response.data.msg;
+      }
+      dispatch(deleteIronSalidaError(errorMessage));
+      
     }
   };
 };
