@@ -37,7 +37,7 @@ export const deleteIronSalidaApi = async (token, id) => {
   try {
     await clientAxios.delete(`/ironsalida/${id}`, { headers });
   } catch (error) {
-    throw new Error(error);
+    throw error;
   }
 };
 
@@ -50,7 +50,6 @@ export const updateIronSalidaApi = async (token, ironSalida, id) => {
 
     return data;
   } catch (error) {
-    
     throw error;
   }
 };

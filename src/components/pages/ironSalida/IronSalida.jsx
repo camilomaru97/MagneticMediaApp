@@ -5,6 +5,8 @@ import moment from "moment/moment";
 import { ModalWell } from "../../../ui/modalsIronSalida/ModalWell";
 import { FormSalida } from "../../../ui/modalsIronSalida/FormSalida";
 import { useState } from "react";
+import { deleteIronSalida } from "../../../actions/ironSalidaActions";
+import Swal from "sweetalert2";
 
 export const IronSalida = () => {
   const { ironSalida } = useSelector((state) => state?.ironSalida);
@@ -23,11 +25,22 @@ export const IronSalida = () => {
   };
 
   const onDeleteIronLlegada = (itemId) => {
-    dispatch(deleteIronSalidaAction(itemId));
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "¡No podrás revertir esto!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, eliminarlo!",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deleteIronSalida(itemId));
+        Swal.fire("Eliminado!", "El registro ha sido eliminado.", "success");
+      }
+    });
   };
-
-  const handleInfoModal = () => {};
-  const handleAddModal = () => {};
 
   return (
     <div className="container">
