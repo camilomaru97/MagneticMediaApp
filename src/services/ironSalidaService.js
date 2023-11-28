@@ -18,7 +18,7 @@ export const postIronSalidaApi = async (token, ironSalida) => {
     });
     return data;
   } catch (error) {
-    throw new Error(error);
+    throw error;
   }
 };
 
@@ -47,8 +47,10 @@ export const updateIronSalidaApi = async (token, ironSalida, id) => {
     const { data } = await clientAxios.put(`/ironsalida/${id}`, ironSalida, {
       headers,
     });
+
     return data;
   } catch (error) {
-    throw new Error(error);
+    
+    throw error;
   }
 };

@@ -42,6 +42,12 @@ export const ironSalidaReducer = (state = initialState, action) => {
     case GET_ID_SALIDA_REJECTED:
     case DELETE_SALIDA_REJECTED:
     case UPDATE_SALIDA_REJECTED:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
     case CREATE_SALIDA_REJECTED:
       return {
         ...state,

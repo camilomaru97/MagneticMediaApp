@@ -73,11 +73,19 @@ export const postIronSalida = (token, ironSalida) => {
     try {
       const data = await postIronSalidaApi(token, ironSalida);
       dispatch(postIronSalidaSuccess(data));
+      
     } catch (error) {
-      dispatch(postIronSalidaError(error));
+      let errorMessage = 'An unknown error occurred';
+      if (error.response && error.response.data && error.response.data.msg) {
+        errorMessage = error.response.data.msg;
+      }
+      console.log("dsdf" , errorMessage);
+      dispatch(postIronSalidaError(errorMessage));
     }
   };
 };
+
+
 export const postIronSalidaPending = () => ({ type: CREATE_SALIDA_PENDING });
 export const postIronSalidaError = (payload) => ({
   type: CREATE_SALIDA_REJECTED,
@@ -91,12 +99,18 @@ export const postIronSalidaSuccess = (payload) => ({
 // Update Iron Salida
 export const updateIronSalida = (token, ironSalida, id) => {
   return async (dispatch) => {
-    dispatch(updateIronSalidaPending());
+    // dispatch(updateIronSalidaPending());
     try {
       const data = await updateIronSalidaApi(token, ironSalida, id);
       dispatch(updateIronSalidaSuccess(data));
     } catch (error) {
-      dispatch(updateIronSalidaError(error));
+      
+      let errorMessage = 'An unknown error occurred to UPDATE';
+      if (error.response && error.response.data && error.response.data.msg) {
+        errorMessage = error.response.data.msg;
+      }
+      
+      dispatch(updateIronSalidaError(errorMessage));
     }
   };
 };
