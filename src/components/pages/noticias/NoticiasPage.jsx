@@ -89,7 +89,7 @@ export const NoticiasPage = () => {
         <div className="container_news">
           <h1>{t('noticias.noticias')}</h1>
           <div className="container_news_translate">
-            <span class="material-symbols-outlined">
+            <span className="material-symbols-outlined">
               g_translate
             </span>
             <button onClick={() => i18n.changeLanguage('es')} style={{ background: 'none', cursor: 'pointer', marginRight: '.5rem', marginLeft: '.5rem', marginTop: '2px', color: '#6C9BCF'}}>
@@ -101,7 +101,7 @@ export const NoticiasPage = () => {
           </div>
           <div className="download_report">
             <button onClick={generarPDF} title="Descargar Reporte">
-              <span class="material-symbols-outlined">
+              <span className="material-symbols-outlined">
                 cloud_download
               </span>
             </button>
