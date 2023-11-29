@@ -1,6 +1,5 @@
 import { clientAxios } from "../config/axios";
 
-
 export const getIronSalidaApi = async (token) => {
     const headers = { 'x-token': token };
     try {

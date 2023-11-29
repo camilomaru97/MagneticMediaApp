@@ -14,8 +14,8 @@ import moment from 'moment/moment';
 
 export const NoticiasPage = () => {
 
-	const [activeBar, setActiveBar] = useState(null)
-	const [t, i18n] = useTranslation('global')
+  const [activeBar, setActiveBar] = useState(null)
+  const [t, i18n] = useTranslation('global')
   const catalogos = useSelector( state => state?.catalogo?.catalogos)
   const ironLlegadas = useSelector( state => state?.ironLlegada?.ironLlegadas)
   const ironSalida = useSelector( state => state?.ironSalida?.ironSalida)
