@@ -2,6 +2,7 @@
 import { useSelector } from 'react-redux'
 import '../styles/ui/menuopciones.css'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 export const MenuOpciones = ({ handleMenuBar }) => {
 
@@ -59,6 +60,16 @@ export const MenuOpciones = ({ handleMenuBar }) => {
           <span className="material-symbols-outlined">
             notifications_none
           </span>
+        </div>
+      </div>
+
+      <div className="user_profile">
+        <div className="logo">
+          <h1>30% de descuento</h1>
+          <h2>Para usuarios de MagneticMedia en LF</h2>
+          <Link to='http://localhost:5174' target='_blank' rel='noopener noreferrer'>
+            <button>Ir a la tienda</button>
+          </Link>
         </div>
       </div>
     </div>

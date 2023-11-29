@@ -25,6 +25,8 @@ export const CatalogoPage = () => {
   const error = useSelector((state) => state?.catalogo.error);
   const dispatch = useDispatch()
 
+  const sliceCatalogo = catalogos?.slice(0, 7);
+
   const handleAddModal = () => {
     setAddModal(!addModal);
   };
@@ -137,7 +139,9 @@ export const CatalogoPage = () => {
             <p style={{ marginLeft: '-13rem', color: '#FF0060', }}>{error}</p>
           )}
         </div>
-      <Paginador />
+        <div className=''>
+          <Paginador />
+        </div>
       </main>
       <MenuOpciones />
     </div>

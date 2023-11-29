@@ -21,7 +21,7 @@ const [page, setPage] = useState(1);
       <span style={{ cursor: 'pointer', marginRight: '-1.5rem' }} onClick={() => setPage(page - 1)} class="material-symbols-outlined">
         navigate_before
       </span>
-      <p style={{ textAlign: 'center', width: '100px', marginTop: '.1rem'}}>{`${page} - ${validCantidad} de ${longitud}`}</p>
+      <p style={{ textAlign: 'center', width: '120px', marginTop: '.1rem'}}>{`${page} - ${validCantidad} de ${longitud}`}</p>
       <span style={{ cursor: 'pointer', marginLeft: '-1.5rem' }} onClick={() => setPage(page + 1)} class="material-symbols-outlined">
         navigate_next
       </span>
