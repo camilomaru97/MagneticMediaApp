@@ -1,0 +1,401 @@
+.container{
+    height: 100vh;
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 12rem auto 23rem;
+}
+
+main{
+    margin-top: 0rem;
+}
+
+main h1{
+    margin-top: 1.7rem;
+    font-size: 1.5rem;
+}
+
+main .noticias{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+}
+
+.guardado_noticias{
+    position: relative;
+}
+
+.guardado_ironsalida{
+    position: relative;
+}
+
+.guardado_ironllegada{
+    position: relative;
+}
+
+main .noticias > div{
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+main .noticias > div:hover{
+    box-shadow: none;
+}
+
+main .noticias > div .status_noticias{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .noticias h3{
+    margin-left: 0.6rem;
+    font-size: 1rem;
+}
+
+main .noticias .progresss{
+    position: relative;
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+}
+
+main .noticias svg{
+    width: 7rem;
+    height: 7rem;
+}
+
+main .noticias svg circle{
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transform: translate(5px, 5px);
+}
+
+main .noticias .guardado_noticias .status_noticias .info_noticias h1{
+    font-size: 1.5rem;
+    margin-top: 0.4rem;
+    margin-left: 0.6rem;
+}
+main .noticias .guardado_ironllegada .status_noticias .info_noticias h1{
+    font-size: 1.5rem;
+    margin-top: 0.4rem;
+    margin-left: 0.6rem;
+}
+main .noticias .guardado_ironsalida .status_noticias .info_noticias h1{
+    font-size: 1.5rem;
+    margin-top: 0.4rem;
+    margin-left: 0.6rem;
+}
+
+main .noticias .guardado_noticias svg circle{
+    stroke: var(--color-success);
+    stroke-dashoffset: -30;
+    stroke-dasharray: 200;
+}
+
+.noticias .guardado_noticias .status_noticias .progress .porcentaje {
+    position: absolute;
+    top: 30%;
+    right: 16%;
+}
+.noticias .guardado_ironsalida .status_noticias .progress .porcentaje {
+    position: absolute;
+    top: 30%;
+    right: 16%;
+}
+.noticias .guardado_ironllegada .status_noticias .progress .porcentaje {
+    position: absolute;
+    top: 30%;
+    right: 16%;
+}
+
+main .noticias .guardado_ironsalida svg circle{
+    stroke: var(--color-primary);
+    stroke-dashoffset: -30;
+    stroke-dasharray: 200;
+}
+
+main .noticias .guardado_ironllegada svg circle{
+    stroke: var(--color-danger);
+    stroke-dashoffset: -30;
+    stroke-dasharray: 200;
+}
+
+/* Empleados del mes */
+
+main .nuevos_empleados{
+    margin-top: 1.3rem;
+}
+
+main .nuevos_empleados .lista_empleados{
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+main .nuevos_empleados .lista_empleados:hover{
+    box-shadow: none;
+}
+main .nuevos_empleados .lista_empleados h2{
+    align-self: center;
+}
+
+main .nuevos_empleados .lista_empleados .empleado{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main .nuevos_empleados .lista_empleados .empleado img{
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 0.4rem;
+    border-radius: 50%;
+}
+
+/* Catalogos nuevos */
+
+main .catalogos_recientes{
+    margin-top: 1.3rem;
+}
+
+main .catalogos_recientes h2{
+    margin-bottom: 0.8rem;
+}
+
+main .catalogos_recientes table{
+    background-color: var(--color-white);
+    width: 100%;
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    transition: all 0.3s ease;
+}
+
+main .catalogos_recientes table:hover{
+    box-shadow: none;
+}
+
+main table tbody td{
+    height: 2.8rem;
+    border-bottom: 1px solid var(--color-light);
+    color: var(--color-dark-variant);
+}
+
+main table tbody tr:last-child td{
+    border: none;
+}
+
+main .catalogos_recientes a{
+    text-align: center;
+    display: block;
+    margin: 1rem auto;
+    color: var(--color-primary);
+}
+
+@media screen and (max-width: 1200px) {
+
+    .container{
+        width: 95%;
+        grid-template-columns: 7rem auto 23rem;
+    }
+
+    main .nuevos_empleados{
+        margin-top: 0;
+    }
+
+    main .noticias{
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .noticias .guardado_noticias .status_noticias .progress .porcentaje {
+        position: absolute;
+        top: 30%;
+        right: 17%;
+    }
+    .noticias .guardado_ironsalida .status_noticias .progress .porcentaje {
+        position: absolute;
+        top: 30%;
+        right: 17%;
+    }
+    .noticias .guardado_ironllegada .status_noticias .progress .porcentaje {
+        position: absolute;
+        top: 30%;
+        right: 17%;
+    }
+    
+    main .nuevos_empleados .lista_empleados .empleado{
+        flex-basis: 40%;
+    }
+    
+    main .catalogos_recientes {
+        width: 94%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 2rem 0 0 0.8rem;
+    }
+    
+    main .catalogos_recientes table{
+        width: 90vw;
+    }
+    
+    .catalogos_recientes table thead tr th:last-child,
+    .catalogos_recientes table thead tr th:first-child{
+        display: none;
+    }
+    
+    .catalogos_recientes table tbody tr td:last-child,
+    .catalogos_recientes table tbody tr td:first-child{
+        display: none;
+    }
+}
+
+.container_news{
+    height: 50px;
+    display: flex;
+    width: 100%;
+    gap: 1.8rem;
+}
+
+.container_news_translate{
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-between;
+    
+}
+
+.download_report{
+    flex: 80%;
+    margin-top: 1.5rem;
+    text-align: right;
+}
+
+.download_report button{
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.2rem .5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-right: .5rem;
+    margin-top: .5rem;
+}
+
+
+
+@media screen and (max-width: 767px) {
+    .container{
+        margin-top: 2rem;
+        width: 100%;
+        grid-template-columns: 1fr;
+        padding: 0 var(--padding-1);
+    }
+
+    main .catalogos_recientes table{
+        width: 86vw;
+    }
+
+    .activeBar{
+        display: block;
+        width: 18.8rem;
+        margin-top: -.5rem;
+    }
+    .desactiveBar{
+        display: none;
+    }
+
+    .noticias .guardado_noticias .status_noticias .progress .porcentaje {
+        position: absolute;
+        top: 30%;
+        right: 14%;
+    }
+    .noticias .guardado_ironsalida .status_noticias .progress .porcentaje {
+        position: absolute;
+        top: 30%;
+        right: 14%;
+    }
+    .noticias .guardado_ironllegada .status_noticias .progress .porcentaje {
+        position: absolute;
+        top: 30%;
+        right: 14%;
+    }
+
+    main .nuevos_empleados .lista_empleados .empleado{
+        flex-basis: 35%;
+    }
+
+    main .catalogos_reciente{
+        position: relative;
+        margin: 3rem 0 0 0;
+        width: 10%;
+    }
+
+    main .catalogos_reciente table{
+        width: 100%;
+        margin: 0;
+    }
+
+    .menu_opciones{
+        width: 94%;
+        margin: 23rem auto 4rem;
+    }
+
+    .menu_opciones .nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        align-items: center;
+        background-color: var(--color-white);
+        padding: 0 var(--padding-1);
+        height: 4.6rem;
+        width: 100%;
+        z-index: 2;
+        box-shadow: 0 1rem 1rem var(--color-light);
+        margin: 0;
+    }
+
+    .menu_opciones .nav .dark-mode{
+        width: 4.4rem;
+        position: absolute;
+        left: 66%;
+    }
+
+    .menu_opciones .perfil_usuario .info{
+        margin-right: -1.5rem;
+    }
+
+    .menu_opciones .nav button{
+        display: inline-block;
+        background-color: transparent;
+        cursor: pointer;
+        color: var(--color-dark);
+        position: absolute;
+        left: 1rem;
+    }
+
+    .menu_opciones .nav button span{
+        font-size: 2rem;
+    }
+}
+
