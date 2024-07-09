@@ -27,7 +27,7 @@ describe('Pruebas en el modulo de catalogo', () => {
         const resAuth = await clientAxios.post('/auth', logUser);
         const token = resAuth.data.token
 
-        const headers = { 'x-token': token };
+        
         const { data } = await clientAxios.get('/catalogo', { headers });
         expect(data).toBeDefined();
        

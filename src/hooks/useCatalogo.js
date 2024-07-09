@@ -16,14 +16,16 @@ export const useCatalogo = (filterSearch ) => {
   useEffect(() => {
     dispatch(getCatalogos(token));
   }, []);
-
-  const filteredCatalogoByDate =  [...catalogos].sort(
+  
+  const sliceCatalogo = catalogos?.slice(0, 7);
+  const filteredCatalogoByDate =  [...sliceCatalogo].sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
   );
 
+
   const filters =
     typeof filterSearch === 'string' && filterSearch.length > 0
-      ? [...catalogos].filter((catalogo) => {
+      ? [...sliceCatalogo].filter((catalogo) => {
           return (
             catalogo.usuario.name
               .toLowerCase()
